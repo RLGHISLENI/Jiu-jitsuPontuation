@@ -4,6 +4,31 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   const [count, setCount] = useState(0);
 
   return (
+    <>
+    <header className="bg-white shadow-md">
+        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-blue-600">MyBrand</h1>
+          <nav className="space-x-6">
+            <a href="#features" className="text-gray-700 hover:text-blue-600">
+              Features
+            </a>
+            <a href="#about" className="text-gray-700 hover:text-blue-600">
+              About
+            </a>
+            <a href="#contact" className="text-gray-700 hover:text-blue-600">
+              Contact
+            </a>
+            {!disableInstall && (
+              <button
+                onClick={handleInstall}
+                className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg text-lg transition duration-300"
+              >
+                Install App
+              </button>
+            )}
+          </nav>
+        </div>
+      </header>
     <div className="font-sans text-gray-900 min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="bg-gray-100 ">     
@@ -130,6 +155,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         </div>
       </footer>
     </div>
+    </>
   );
 };
 
