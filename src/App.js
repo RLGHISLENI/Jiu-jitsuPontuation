@@ -1,23 +1,46 @@
-import logo from './logo.svg';
+import OfflinePage from "Offline";
 import './App.css';
+import LandingPage from "./LandingPage";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [offline, setOffline] = useState(false);
+  const [prompt, setPrompt] = useState(null);
+
+  const showPrompt = (e) => {
+    console.log("beforeinstallprompt event received", e);
+    if (prompt) return;
+    e.preventDefault();
+    setPrompt(e);
+  };
+
+  useEffect(() => {
+    const handleOnline = () => setOffline(false);
+    const handleOffline = () => setOffline(true);
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
+    window.addEventListener("beforeinstallprompt", showPrompt);
+
+    return () => {
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
+      window.removeEventListener("beforeinstallprompt", showPrompt);
+    };
+  }, []);
+
+  const handleInstall = () => {
+    if (!prompt) return;
+    prompt.prompt();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      {offline ? (
+        <OfflinePage />
+      ) : (
+        <LandingPage disableInstall={!prompt} handleInstall={handleInstall} />
+      )}
     </div>
   );
 }
