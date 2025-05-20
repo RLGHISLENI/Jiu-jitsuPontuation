@@ -1,34 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
-  const [count, setCount] = useState(0);
+  const [showInstallAlert, setShowInstallAlert] = useState(false);
+
+  useEffect(() => {
+    if (!disableInstall) {
+      setShowInstallAlert(true); // exibe o alerta automaticamente
+    }
+  }, [disableInstall]);
 
   return (
     <>
-    <header className="bg-white shadow-md">
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-blue-600">MyBrand</h1>
-          <nav className="space-x-6">
-            <a href="#features" className="text-gray-700 hover:text-blue-600">
-              Features
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-blue-600">
-              About
-            </a>
-            <a href="#contact" className="text-gray-700 hover:text-blue-600">
-              Contact
-            </a>
-            {!disableInstall && (
-              <button
-                onClick={handleInstall}
-                className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg text-lg transition duration-300"
-              >
-                Install App
-              </button>
-            )}
-          </nav>
-        </div>
-      </header>
+    {showInstallAlert && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
+      <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
+      <p className="mb-6">Deseja instalar este aplicativo em seu dispositivo?</p>
+      <div className="flex justify-center gap-4">
+        <button
+          onClick={() => {
+            handleInstall();
+            setShowInstallAlert(false);
+          }}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Instalar
+        </button>
+        <button
+          onClick={() => setShowInstallAlert(false)}
+          className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+)}
     <div className="font-sans text-gray-900 min-h-screen flex flex-col">
       {/* Hero Section */}
       <section className="bg-gray-100 ">     
