@@ -41,154 +41,167 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         <section className="bg-gray-100 ">
           {/* Aqui insere seu layout customizado (primeira UI) */}
           <div className="bg-white flex items-center">
-            <div className="w-full max-w-full   overflow-hidden">
-              <div className="grid grid-cols-1 gap-3 bg-blue-600 text-white ">
-                {/* Parte Azul (Topo) */}
-                <div className="ml-10">
+            <div className="w-full max-w-full overflow-hidden">
+              <div className="bg-blue-600 text-white p-4 md:p-8">
+                <div className="ml-4 md:ml-0 flex justify-center md:justify-start ">
+                  {/* Ajustei margens para mobile e centralizei o logo */}
                   <img
                     src="/logo.png"
                     alt="Logo do evento"
-                    className="w-24 h-auto" // ajuste o tamanho como quiser
+                    className="w-20 md:w-24 h-auto" // largura menor em mobile
                   />
                 </div>
-                <div className="col-span-2 p-8  pt-[120px]">
+                <div className="flex flex-col md:flex-row md:items-center md:gap-8">
+                  {/* Passagem de Guarda - Container */}
+                  <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full md:flex md:flex-row md:gap-3 md:mt-10 md:w-auto">
 
-                  <div className="flex items-end gap-20 ms-20 ">
-                    {/* Montada / Pegada pelas costas */}
+                    {/* Passagem de guarda 1 */}
                     <div className="flex flex-col items-center text-center">
-                      <p className="text-md font-medium mb-2">Passagem de guarda</p>
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Passagem de guarda</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-white text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <h4>00</h4>
+                      </div>
+                    </div>
 
-                      <div
-                        className="w-[130%] flex items-center justify-center cursor-pointer 
-  text-white text-9xl font-extrabold border border-white rounded-xl 
-  ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                      >
+                    {/* Passagem de guarda 2 */}
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Montada Pegada nas Costas</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-white text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                         <h1>00</h1>
                       </div>
                     </div>
 
-                    {/* Passagem de guarda */}
-                    <div className="flex flex-col items-center text-center">
-                      <p className="text-md font-medium mb-2">Passagem de guarda</p>
 
-                      <div
-                        className="w-[130%] flex items-center justify-center cursor-pointer 
-  text-white text-9xl font-extrabold border border-white rounded-xl 
-  ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                      >
+
+                    {/* Passagem de guarda 3 */}
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Passagem de guarda</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-white text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
                         <h1>00</h1>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Queda / Raspagem / Joelho na barriga */}
-                    <div className="flex flex-col items-center text-center">
-                      <p className="text-md font-medium mb-2">Passagem de guarda</p>
 
-                      <div
-                        className="w-[130%] flex items-center justify-center cursor-pointer 
-  text-white text-9xl font-extrabold border border-white rounded-xl 
-  ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
-                      >
-                        <h1>00</h1>
-                      </div>
-                    </div>
 
-                    {/* Vantagem / Punição */}
-                    <div className="flex flex-col items-end text-right justify-end">
-                      <p className="text-sm">Vantagem</p>
+                  {/* Vantagem / Punição */}
+                  <div className="grid grid-cols-1 gap-4 w-24 md:flex md:flex-col md:items-end md:w-auto md:mt-auto ">
+                    <div className="flex flex-col items-center md:items-center text-center md:text-right">
+                      <p className="text-xs md:text-sm md:mb-2">Vantagem</p>
                       <button
-                        className="w-[130%] text-yellow-400 text-4xl font-extrabold border border-white rounded-xl 
-  ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
-  flex items-center justify-center cursor-pointer"
-                        onClick={() => console.log("Vantagem clicada")}
-                      >
-                        01
-                      </button>
-
-                      <p className="text-sm mt-4">Punição</p>
-                      <button
-                        className="w-[130%] text-red-400 text-4xl font-extrabold border border-white rounded-xl 
-  ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
-  flex items-center justify-center cursor-pointer"
+                        className="w-full md:w-[130%] text-yellow-400 text-3xl md:text-4xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
+          flex items-center justify-center cursor-pointer"
                         onClick={() => console.log("Vantagem clicada")}
                       >
                         01
                       </button>
                     </div>
+
+                    <div className="flex flex-col items-center md:items-end text-center md:text-right">
+                      <p className="text-xs md:text-sm mt-2 md:mt-4">Punição</p>
+                      <button
+                        className="w-full md:w-[130%] text-red-400 text-3xl md:text-4xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
+          flex items-center justify-center cursor-pointer"
+                        onClick={() => console.log("Punição clicada")}
+                      >
+                        01
+                      </button>
+                    </div>
                   </div>
-                  <div class="inline-flex items-center gap-3 bg-gray-100 dark:bg-gray-800 px-5 py-3 rounded-lg shadow-md">
-                    <h5 class="text-lg font-semibold text-gray-700 dark:text-gray-200 select-none">Parado</h5>
-                    <span id="cronometro" class="text-xl font-mono text-indigo-600 dark:text-indigo-400 tracking-widest select-mono">00:00:00</span>
-                  </div>
-                  {/* <div className="mt-10 text-right">
-                    <p className="text-xl">Pontuação total</p>
-                    <p className="text-8xl font-extrabold">09</p>
-                  </div> */}
                 </div>
-
-                {/* Temporizador */}
-                {/* <div className="bg-white text-black col-span-1 p-8">
-                <div className="text-center">
-                  <div className="bg-red-600 text-white text-4xl font-bold py-2 rounded-lg">
+              </div>
+              <div className="h-0 flex flex-col items-end text-center justify-center mr-20">
+                <div className="bg-white w-80  text-black text-center text-4xl font-bold rounded-lg">
+                  <div className="bg-red-600 text-white text-center text-4xl font-bold py-2">
                     Parado
                   </div>
                   <p className="text-8xl font-extrabold mt-6">05:00</p>
                   <p className="text-lg mt-2">Clique para definir o tempo</p>
                 </div>
-                <div className="mt-10 text-center">
-                  <p className="text-xl">Pontuação total</p>
-                  <p className="text-8xl font-extrabold">00</p>
-                </div>
-              </div> */}
-
               </div>
 
               {/* Parte inferior (cinza claro) */}
-              <div className="bg-white grid grid-cols-2 gap-0 p-8 border-t-4 border-black">
-                <div className="flex justify-between gap-6">
-                  <div>
-                    <h2 className="text-2xl font-bold leading-tight">
-                      Montada
-                      <br />
-                      Pegada pelas costas
-                    </h2>
-                    <p className="text-6xl font-extrabold">00</p>
+              
+              <div className="flex bg-gray-200 md:p-8 flex-grow flex-col md:flex-row md:items-center md:gap-8 min-h-[51.5vh]">
+              {/* Passagem de Guarda - Container */}
+                  <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full md:flex md:flex-row md:gap-3 md:mt-10 md:w-auto">
+
+                    {/* Passagem de guarda 1 */}
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Passagem de guarda</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-black text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <h4>00</h4>
+                      </div>
+                    </div>
+
+                    {/* Passagem de guarda 2 */}
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Montada Pegada nas Costas</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-black text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <h1>00</h1>
+                      </div>
+                    </div>
+
+
+
+                    {/* Passagem de guarda 3 */}
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-sm md:text-md font-medium mb-1 md:mb-2">Passagem de guarda</p>
+                      <div className="w-full md:w-56 flex items-center justify-center cursor-pointer 
+          text-black text-6xl md:text-9xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                        <h1>00</h1>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h2 className="text-2xl font-bold">Passagem de guarda</h2>
-                    <p className="text-6xl font-extrabold">00</p>
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold leading-tight">
-                      Queda
-                      <br />
-                      Raspagem
-                      <br />
-                      Joelho na barriga
-                    </h2>
-                    <p className="text-6xl font-extrabold">00</p>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xl">Vantagem</p>
-                    <p className="text-yellow-400 text-4xl font-extrabold">00</p>
-                    <p className="text-xl mt-4">Punição</p>
-                    <p className="text-red-400 text-4xl font-extrabold">00</p>
+
+
+
+                  {/* Vantagem / Punição */}
+                  <div className="grid grid-cols-1 gap-4 w-24 md:flex md:flex-col md:items-center md:w-auto mt-4 ">
+                    <div className="flex flex-col items-center md:items-end text-center md:text-right">
+                      <p className="text-xs md:text-sm">Vantagem</p>
+                      <button
+                        className="w-full md:w-[130%] text-yellow-400 text-3xl md:text-4xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
+          flex items-center justify-center cursor-pointer"
+                        onClick={() => console.log("Vantagem clicada")}
+                      >
+                        01
+                      </button>
+                    </div>
+
+                    <div className="flex flex-col items-center md:items-end text-center md:text-right">
+                      <p className="text-xs md:text-sm mt-2 md:mt-4">Punição</p>
+                      <button
+                        className="w-full md:w-[130%] text-red-400 text-3xl md:text-4xl font-extrabold border border-white rounded-xl 
+          ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 
+          flex items-center justify-center cursor-pointer"
+                        onClick={() => console.log("Punição clicada")}
+                      >
+                        01
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-end justify-end">
-                  <div className="text-right">
-                    <p className="text-xl">Pontuação total</p>
-                    <p className="text-8xl font-extrabold">00</p>
-                    <div className="text-lg text-right mt-6 font-semibold text-gray-700">CENTAURUS</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer
+        {/* <footer
           id="contact"
           className="bg-gray-900 text-gray-200 py-10 mt-auto"
         >
@@ -206,7 +219,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               </a>
             </div>
           </div>
-        </footer>
+        </footer> */}
       </div>
     </>
   );
