@@ -18,7 +18,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
 
   return (
     <>
-      {/* {showInstallAlert && (
+       {showInstallAlert && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
             <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
@@ -42,7 +42,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
             </div>
           </div>
         </div>
-      )} */}
+      )} 
       <div className="font-sans min-h-screen flex flex-col">
         {/* Hero Section */}
         <section className="bg-gray-100">
