@@ -2,6 +2,8 @@ import OfflinePage from "Offline";
 import './App.css';
 import LandingPage from "./LandingPage";
 import { useEffect, useState } from "react";
+import TotalScoreCard from "components/TotalScoreCard";
+import PlayerSection from "components/PlayerSection";
 
 function App() {
   const [offline, setOffline] = useState(false);
