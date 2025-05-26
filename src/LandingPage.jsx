@@ -20,7 +20,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
     <>
       {showInstallAlert && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
+          <div className=" p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
             <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
             <p className="mb-6">
               Deseja instalar este aplicativo em seu dispositivo?
@@ -45,14 +45,14 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           </div>
         </div>
       )}
-      <div className="font-sans min-h-screen flex flex-col">
+      <div className="font-sans min-h-screen flex md:flex-col lg:flex-col flex-col">
         {/* Hero Section */}
-        <section className="bg-gray-100">
-          <div className="relative w-full md:h-auto">
+        <section className="">
+          <div className="relative w-60 md:w-72 lg:max-h-max ">
             <img
               src={logo} // Altere para a URL da sua imagem
               alt="Imagem de fundo"
-              className="absolute w-40 top-[380px] h-auto left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-40"
+              className="absolute top-[300px] md:top-[35rem] lg:top-[400px]  lg:left-[40rem] md:left-[34rem] left-1/2 transform md:h-44 lg:translate-x-3/4 translate-x-2/3 -translate-y-1/4 opacity-40"
             />
           </div>
           <PlayerSection
@@ -77,6 +77,13 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               placeholderColor={"placeholder-black"}
               BackGroundColor="bg-white"
               textColor="text-black"
+            />
+          </div>
+          <div className="absolute w-60 md:w-72 lg:max-h-max ">
+            <img
+              src={logo} // Altere para a URL da sua imagem
+              alt="Imagem de fundo"
+              className="absolute top-[-200px] md:top-[-53rem] lg:mt-28 md:left-[34rem] lg:left-[40rem] left-1/2 transform md:h-44 lg:translate-x-3/4 translate-x-2/3 -translate-y-1/4 opacity-40"
             />
           </div>
         </section>
