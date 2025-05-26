@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logo from "./assets/logo2.png";
+import logo from "./assets/logo3.png";
 import Blows from "components/Blows";
 import PlayerInput from "components/PlayerInput";
 import PlayerSection from "components/PlayerSection";
@@ -18,11 +18,13 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
 
   return (
     <>
-       {showInstallAlert && (
+      {showInstallAlert && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
             <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
-            <p className="mb-6">Deseja instalar este aplicativo em seu dispositivo?</p>
+            <p className="mb-6">
+              Deseja instalar este aplicativo em seu dispositivo?
+            </p>
             <div className="flex justify-center gap-4">
               <button
                 onClick={() => {
@@ -42,7 +44,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
             </div>
           </div>
         </div>
-      )} 
+      )}
       <div className="font-sans min-h-screen flex flex-col">
         {/* Hero Section */}
         <section className="bg-gray-100">
@@ -50,16 +52,16 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
             <img
               src={logo} // Altere para a URL da sua imagem
               alt="Imagem de fundo"
-              className="absolute w-40 top-[60px] h-auto left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity"
+              className="absolute w-40 top-[380px] h-auto left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-40"
             />
           </div>
           <PlayerSection
-            buttonColor={"text-black"}
-            textInput={"text-black"}
-            textLabel={"text-black"}
-            placeholderColor={"placeholder-black"}
-            BackGroundColor="bg-gray-200"
-            textColor="text-black"
+            buttonColor={"text-white"}
+            textInput={"text-white"}
+            textLabel={"text-white"}
+            placeholderColor={"placeholder-white"}
+            BackGroundColor="bg-gray-900"
+            textColor="text-white"
           />
           <div className="relative ">
             <TimerCard titleTimer="Parado" time="10:00" />
@@ -67,12 +69,14 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
 
           <div>
             <PlayerSection
-              buttonColor={"text-white"}
-              textInput={"text-white"}
-              textLabel={"text-white"}
-              placeholderColor={"placeholder-white"}
-              BackGroundColor="bg-gray-900"
-              textColor="text-white"
+              backgroundColorPunishement={"bg-gray-100"}
+              backgroundColorBLows={"bg-gray-100"}
+              buttonColor={"text-black"}
+              textInput={"text-black"}
+              textLabel={"text-black"}
+              placeholderColor={"placeholder-black"}
+              BackGroundColor="bg-white"
+              textColor="text-black"
             />
           </div>
         </section>
