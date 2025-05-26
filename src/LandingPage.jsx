@@ -19,7 +19,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   return (
     <>
       {showInstallAlert && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className=" p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
             <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
             <p className="mb-6">
@@ -45,69 +45,48 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           </div>
         </div>
       )}
-      <div className="font-sans min-h-screen flex md:flex-col lg:flex-col flex-col">
-        {/* Hero Section */}
-        <section className="">
-          <div className="relative w-60 md:w-72 lg:max-h-max ">
-            <img
-              src={logo} // Altere para a URL da sua imagem
-              alt="Imagem de fundo"
-              className="absolute top-[300px] md:top-[35rem] lg:top-[400px]  lg:left-[40rem] md:left-[34rem] left-1/2 transform md:h-44 lg:translate-x-3/4 translate-x-2/3 -translate-y-1/4 opacity-40"
+      <div className="font-sans flex flex-col h-screen">
+        {" "}
+        {/* Adicione h-screen aqui */}
+        <div className="flex flex-col flex-1">
+          {" "}
+          {/* Container principal flexível */}
+          {/* Primeira seção (preto) */}
+          <div className="flex-1 min-h-0">
+            {" "}
+            {/* Adicione min-h-0 para controle de altura */}
+            <PlayerSection
+              buttonColor={"text-white"}
+              textInput={"text-white"}
+              textLabel={"text-white"}
+              placeholderColor={"placeholder-white"}
+              BackGroundColor="bg-gray-900"
+              textColor="text-white"
+              borderColorScore={"border-white"}
+              player={"Lutador 1"}
+              borderColorPunishement={"border-white"}
             />
           </div>
-          <PlayerSection
-            buttonColor={"text-white"}
-            textInput={"text-white"}
-            textLabel={"text-white"}
-            placeholderColor={"placeholder-white"}
-            BackGroundColor="bg-gray-900"
-            textColor="text-white"
-          />
-          <div className="relative ">
-            <TimerCard titleTimer="Parado" time="10:00" />
-          </div>
-
-          <div>
+          {/* Segunda seção (cinza) */}
+          <div className="flex-1 min-h-0">
+            {" "}
+            {/* Adicione min-h-0 para controle de altura */}
             <PlayerSection
+              player={"Lutador 2"}
               backgroundColorPunishement={"bg-gray-100"}
               backgroundColorBLows={"bg-gray-100"}
               buttonColor={"text-black"}
               textInput={"text-black"}
+              borderColorScore={"border-black"}
               textLabel={"text-black"}
               placeholderColor={"placeholder-black"}
               BackGroundColor="bg-white"
               textColor="text-black"
+              borderColorPunishement={"border-black"}
+              showTimer={true}
             />
           </div>
-          <div className="absolute w-60 md:w-72 lg:max-h-max ">
-            <img
-              src={logo} // Altere para a URL da sua imagem
-              alt="Imagem de fundo"
-              className="absolute top-[-200px] md:top-[-53rem] lg:mt-28 md:left-[34rem] lg:left-[40rem] left-1/2 transform md:h-44 lg:translate-x-3/4 translate-x-2/3 -translate-y-1/4 opacity-40"
-            />
-          </div>
-        </section>
-
-        {/* Footer */}
-        {/* <footer
-          id="contact"
-          className="bg-gray-900 text-gray-200 py-10 mt-auto"
-        >
-          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; {new Date().getFullYear()} MyBrand. All rights reserved.</p>
-            <div className="space-x-4 mt-4 md:mt-0">
-              <a href="#" className="hover:text-white">
-                Privacy
-              </a>
-              <a href="#" className="hover:text-white">
-                Terms
-              </a>
-              <a href="#" className="hover:text-white">
-                Support
-              </a>
-            </div>
-          </div>
-        </footer> */}
+        </div>
       </div>
     </>
   );

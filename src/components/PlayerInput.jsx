@@ -11,8 +11,7 @@ export default function PlayerInput({
     <div
       className={`
         absolute 
-        top-[-50px] md:top-[-80px] lg:top-[-70px]
-        left-0 right-0 
+        left-5 right-0 mt-auto
         gap-2 
         flex flex-col 
         items-start sm:items-start md:items-start 
