@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AdvantagePunishement({backgroundColorPunishement, borderColorPunishement}) {
   return (
-    <div className="grid grid-cols-1 w-24 md:flex md:flex-col md:items-center md:w-auto mt-28">
+    <div className="grid grid-cols-1 w-24 md:flex md:flex-col md:items-center md:w-auto mt-28 2xl:mt-48">
       <div className=" flex flex-col items-center md:items-center text-center md:text-right">
         <p className="text-xs md:text-xl mb-2">Vantagem</p>
         <button

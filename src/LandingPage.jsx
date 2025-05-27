@@ -19,8 +19,8 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   return (
     <>
       {showInstallAlert && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className=" p-6 rounded-lg shadow-xl text-center max-w-sm w-full">
+        <div className="fixed z-50 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className=" p-6 rounded-lg bg-white shadow-xl text-center max-w-sm w-full">
             <h2 className="text-xl font-bold mb-4">Instalar Aplicativo</h2>
             <p className="mb-6">
               Deseja instalar este aplicativo em seu dispositivo?
@@ -56,6 +56,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
             {" "}
             {/* Adicione min-h-0 para controle de altura */}
             <PlayerSection
+              
               buttonColor={"text-white"}
               textInput={"text-white"}
               textLabel={"text-white"}

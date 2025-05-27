@@ -17,7 +17,7 @@ export default function PlayerSection({player, showTimer, backgroundColorPunishe
         </div>
         {/* Timer no espaço à direita */}
         {showTimer && (
-          <div className="flex items-center  justify-center absolute right-12 top-16">
+          <div className="flex items-center  justify-center absolute right-12 2xl:top-36 top-16">
             <TimerCard titleTimer="Parado" time="10:00" />
           </div>
         )}

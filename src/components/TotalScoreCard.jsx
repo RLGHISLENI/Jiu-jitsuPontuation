@@ -6,7 +6,7 @@ export default function TotalScoreCard({title, score}) {
       <h4 className="bg-red-600 text-white text-center py-2 text-3xl font-bold">
         {title}
       </h4>
-      <p className="text-8xl font-extrabold  ">
+      <p className="text-8xl font-extrabold  2xl:text-9xl">
         {score}
       </p>
     </div>

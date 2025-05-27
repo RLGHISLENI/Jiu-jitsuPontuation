@@ -4,28 +4,41 @@ import logo from "../assets/logo3.png";
 
 export default function TimerCard({ titleTimer, time }) {
   return (
-    <div className="relative"> {/* Container relativo para posicionamento absoluto da logo */}
-      {/* Estrutura original sem alterações */}
-      <div className="flex flex-col items-center  justify-center gap-8">
-        <div className="w-64">
+    <div className="relative">
+      {/* Container principal - mantendo proporções originais */}
+      <div className="flex flex-col items-center justify-center gap-8 
+                     2xl:gap-10 3xl:gap-12">
+        {/* TotalScoreCard superior - crescimento moderado */}
+        <div className="w-64 2xl:w-96 3xl:w-80">
           <TotalScoreCard title={"Pontuação Final"} score={"00"} />
         </div>
 
-        <div className="bg-gray-100 w-96 text-black text-center font-bold rounded-lg">
-          <div className="bg-red-600 text-white text-center text-4xl font-bold py-2">
+        {/* Timer - crescimento proporcional */}
+        <div className="bg-gray-100 w-96 text-black text-center font-bold rounded-lg
+                       2xl:w-[38rem] 3xl:w-[32rem]">
+          <div className="bg-red-600 text-white text-center text-4xl font-bold py-2
+                          2xl:text-5xl 2xl:py-3 3xl:text-6xl">
             {titleTimer}
           </div>
-          <p className="text-8xl font-extrabold">{time}</p>
-          <p className="text-lg mt-2">Clique para definir o tempo</p>
+          <p className="text-8xl font-extrabold
+                         2xl:text-9xl 3xl:text-9xl">
+            {time}
+          </p>
+          <p className="text-lg mt-2
+                         2xl:text-xl 3xl:text-2xl">
+            Clique para definir o tempo
+          </p>
         </div>
 
-        <div className="w-64">
+        {/* TotalScoreCard inferior - crescimento moderado */}
+        <div className="w-64 2xl:w-96 3xl:w-80">
           <TotalScoreCard title={"Pontuação Final"} score={"00"} />
         </div>
       </div>
 
-      {/* Logo posicionada absolutamente sem afetar o layout */}
-      <div className="absolute -left-52 top-1/2 transform -translate-y-1/4 w-44 hidden opacity-80 md:block">
+      {/* Logo - ajuste posicional fino */}
+      <div className="absolute -left-52 top-1/2 transform -translate-y-1/3 w-44 hidden opacity-80 md:block
+                      2xl:-left-80 2xl:w-72 3xl:-left-64 3xl:w-52">
         <img 
           src={logo} 
           alt="Logo" 
