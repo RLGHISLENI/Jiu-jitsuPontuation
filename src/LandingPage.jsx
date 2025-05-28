@@ -4,12 +4,12 @@ import Blows from "components/Blows";
 import PlayerInput from "components/PlayerInput";
 import PlayerSection from "components/PlayerSection";
 import TimerCard from "components/TimerCard";
+import { ScoreProvider, useScore } from "components/context/ScoreContet";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
   const [showInstallAlert, setShowInstallAlert] = useState(false);
   // const [nameAzulPlayer, setNameAzulPlayer] = useState("")
   // const [nameBrancoPlayer, setNameBrancoPlayer] = useState("")
-
   useEffect(() => {
     if (!disableInstall) {
       setShowInstallAlert(true); // exibe o alerta automaticamente
@@ -46,46 +46,42 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         </div>
       )}
       <div className="font-sans flex flex-col h-screen">
-        {" "}
         {/* Adicione h-screen aqui */}
         <div className="flex flex-col flex-1">
-          {" "}
-          {/* Container principal flexível */}
-          {/* Primeira seção (preto) */}
           <div className="flex-1 min-h-0">
-            {" "}
-            {/* Adicione min-h-0 para controle de altura */}
-            <PlayerSection
-              
-              buttonColor={"text-white"}
-              textInput={"text-white"}
-              textLabel={"text-white"}
-              placeholderColor={"placeholder-white"}
-              BackGroundColor="bg-gray-900"
-              textColor="text-white"
-              borderColorScore={"border-white"}
-              player={"Lutador 1"}
-              borderColorPunishement={"border-white"}
-            />
+            <ScoreProvider>
+              <PlayerSection
+                buttonColor={"text-white"}
+                textInput={"text-white"}
+                textLabel={"text-white"}
+                placeholderColor={"placeholder-white"}
+                BackGroundColor="bg-gray-900"
+                textColor="text-white"
+                borderColorScore={"border-white"}
+                player={"Lutador 1"}
+                borderColorPunishement={"border-white"}                showTimer={true}
+
+              />
+            </ScoreProvider>
           </div>
-          {/* Segunda seção (cinza) */}
           <div className="flex-1 min-h-0">
             {" "}
-            {/* Adicione min-h-0 para controle de altura */}
-            <PlayerSection
-              player={"Lutador 2"}
-              backgroundColorPunishement={"bg-gray-100"}
-              backgroundColorBLows={"bg-gray-100"}
-              buttonColor={"text-black"}
-              textInput={"text-black"}
-              borderColorScore={"border-black"}
-              textLabel={"text-black"}
-              placeholderColor={"placeholder-black"}
-              BackGroundColor="bg-white"
-              textColor="text-black"
-              borderColorPunishement={"border-black"}
-              showTimer={true}
-            />
+            <ScoreProvider>
+              <PlayerSection
+                player={"Lutador 2"}
+                backgroundColorPunishement={"bg-gray-100"}
+                backgroundColorBLows={"bg-gray-100"}
+                buttonColor={"text-black"}
+                textInput={"text-black"}
+                borderColorScore={"border-black"}
+                textLabel={"text-black"}
+                placeholderColor={"placeholder-black"}
+                BackGroundColor="bg-white"
+                textColor="text-black"
+                borderColorPunishement={"border-black"}
+                showTimer={true}
+              />
+            </ScoreProvider>
           </div>
         </div>
       </div>

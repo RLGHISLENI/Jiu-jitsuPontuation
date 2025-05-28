@@ -3,9 +3,11 @@ import PlayerInput from "./PlayerInput";
 import Blows from "./Blows";
 import AdvantagePunishement from "./AdvantagePunishement";
 import TimerCard from "./TimerCard";
+import { ScoreProvider } from "./context/ScoreContet";
 
 export default function PlayerSection({player, showTimer, backgroundColorPunishement, borderColorScore, borderColorPunishement, backgroundColorBLows,buttonColor, placeholderColor ,BackGroundColor, textColor }) {
   return (
+    <ScoreProvider>
      <section className="h-full">
       <div className="bg-white h-full flex"> {/* Adicione flex aqui */}
         {/* Conteúdo principal */}
@@ -23,5 +25,6 @@ export default function PlayerSection({player, showTimer, backgroundColorPunishe
         )}
       </div>
     </section>
+    </ScoreProvider>
   );
 }

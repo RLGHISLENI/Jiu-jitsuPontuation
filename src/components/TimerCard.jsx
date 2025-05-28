@@ -1,8 +1,10 @@
 import React from "react";
 import TotalScoreCard from "./TotalScoreCard";
 import logo from "../assets/logo3.png";
+import { useScore } from "./context/ScoreContet";
 
-export default function TimerCard({ titleTimer, time }) {
+export default function TimerCard({ titleTimer, time,}) {
+  const {totalScores} = useScore()
   return (
     <div className="relative">
       {/* Container principal - mantendo proporções originais */}
@@ -10,7 +12,7 @@ export default function TimerCard({ titleTimer, time }) {
                      2xl:gap-10 3xl:gap-12">
         {/* TotalScoreCard superior - crescimento moderado */}
         <div className="w-64 2xl:w-96 3xl:w-80">
-          <TotalScoreCard title={"Pontuação Final"} score={"00"} />
+          <TotalScoreCard title={"Pontuação Final"} score={totalScores.toString().padStart(2, '0')} />
         </div>
 
         {/* Timer - crescimento proporcional */}
@@ -32,7 +34,7 @@ export default function TimerCard({ titleTimer, time }) {
 
         {/* TotalScoreCard inferior - crescimento moderado */}
         <div className="w-64 2xl:w-96 3xl:w-80">
-          <TotalScoreCard title={"Pontuação Final"} score={"00"} />
+          <TotalScoreCard title={"Pontuação Final"} score={totalScores.toString().padStart(2, '0')} />
         </div>
       </div>
 
