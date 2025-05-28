@@ -49,7 +49,6 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         {/* Adicione h-screen aqui */}
         <div className="flex flex-col flex-1">
           <div className="flex-1 min-h-0">
-            <ScoreProvider>
               <PlayerSection
                 buttonColor={"text-white"}
                 textInput={"text-white"}
@@ -59,14 +58,12 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
                 textColor="text-white"
                 borderColorScore={"border-white"}
                 player={"Lutador 1"}
-                borderColorPunishement={"border-white"}                showTimer={true}
+                borderColorPunishement={"border-white"}                
 
               />
-            </ScoreProvider>
           </div>
           <div className="flex-1 min-h-0">
             {" "}
-            <ScoreProvider>
               <PlayerSection
                 player={"Lutador 2"}
                 backgroundColorPunishement={"bg-gray-100"}
@@ -81,7 +78,6 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
                 borderColorPunishement={"border-black"}
                 showTimer={true}
               />
-            </ScoreProvider>
           </div>
         </div>
       </div>

@@ -3,16 +3,19 @@ import TotalScoreCard from "./TotalScoreCard";
 import logo from "../assets/logo3.png";
 import { useScore } from "./context/ScoreContet";
 
-export default function TimerCard({ titleTimer, time,}) {
-  const {totalScores} = useScore()
+export default function TimerCard({ titleTimer, time, player, showTotaScorePlayer1, showTotaScorePlayer2}) {
+  const {getTotalScore} = useScore()
+  const totalPlayer1 = getTotalScore("Lutador 1");
+  const totalPlayer2 = getTotalScore("Lutador 2");
+  
   return (
     <div className="relative">
       {/* Container principal - mantendo proporções originais */}
       <div className="flex flex-col items-center justify-center gap-8 
-                     2xl:gap-10 3xl:gap-12">
+                     2xl:gap-10 3xl:gap-12  tv-lg:gap-12 tv-4k:gap-16">
         {/* TotalScoreCard superior - crescimento moderado */}
-        <div className="w-64 2xl:w-96 3xl:w-80">
-          <TotalScoreCard title={"Pontuação Final"} score={totalScores.toString().padStart(2, '0')} />
+        <div className="w-64 2xl:w-96 3xl:w-80 tv-lg:w-[28rem] tv-4k:w-[32rem]">
+          <TotalScoreCard title={"Pontuação Final"} player={player} score={totalPlayer1.toString().padStart(2, '0')} />
         </div>
 
         {/* Timer - crescimento proporcional */}
@@ -34,7 +37,7 @@ export default function TimerCard({ titleTimer, time,}) {
 
         {/* TotalScoreCard inferior - crescimento moderado */}
         <div className="w-64 2xl:w-96 3xl:w-80">
-          <TotalScoreCard title={"Pontuação Final"} score={totalScores.toString().padStart(2, '0')} />
+          <TotalScoreCard title={"Pontuação Final"} score={totalPlayer2.toString().padStart(2, '0')} />
         </div>
       </div>
 
