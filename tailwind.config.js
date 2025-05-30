@@ -15,6 +15,7 @@ module.exports = {
         '12xl': '12rem',     // 192px
         '14xl': '14rem',
         '15xl': '15rem',
+        '16xl': '17rem',
         '17xl': '20rem',     // 224px
       },
       spacing: {

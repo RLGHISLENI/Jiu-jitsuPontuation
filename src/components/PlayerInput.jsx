@@ -7,6 +7,7 @@ export default function PlayerInput({
   borderColor,
   placeholderColor,
 }) {
+
   return (
     <div
       className={`
@@ -21,12 +22,13 @@ export default function PlayerInput({
     >
       <label
         htmlFor={player}
-        className={`text-xl sm:text-2xl md:text-3xl tv-4k:text-8xl tv-lg:text-7xl font-extrabold ${textLabel} select-none`}
+        className={`text-xl sm:text-2xl md:text-3xl 2xl:text-5xl tv-4k:text-8xl tv-lg:text-7xl font-extrabold ${textLabel} select-none`}
       >
         {player}
       </label>
       <input
         id={player}
+        
         type="text"
         placeholder="Digite o nome do atleta"
         className={` tv-4k:max-w-[70rem] lg-4k:max-w-[70rem] tv-lg:max-w-[50rem]

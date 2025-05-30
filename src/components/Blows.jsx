@@ -19,7 +19,7 @@ export default function Blows({
   return (
     <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full 
                    md:flex md:flex-row 
-                   md:gap-3 2xl:gap-4 tv-lg:gap-6 tv-4k:gap-8 
+                   md:gap-3 2xl:gap-4 tv-lg:gap-6 tv-4k:gap-2 
                    md:w-auto">
       <PlayerInput
         player={player}
