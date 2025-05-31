@@ -22,29 +22,29 @@ export default function TimerCard({setTime, titleTimer, handleStart,
         </div>
 
         {/* Timer - crescimento proporcional */}
-        <div className="bg-gray-100 w- tv-4k:w-[73rem] tv-lg:w-[45rem] text-black text-center font-bold rounded-lg
+        <div className="bg-gray-100 w-96 tv-4k:w-[73rem] tv-lg:w-[45rem] text-black text-center font-bold rounded-lg
                        2xl:w-[38rem] 3xl:w-[32rem]">
           <div className="bg-red-600 text-white text-center text-4xl font-bold py-2
                           2xl:text-5xl 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl">
             {titleTimer}
           </div>
           <p className="text-8xl font-extrabold
-                         2xl:text-10xl tv-4k:text-16xl tv-lg:text-10xl hover:text-red-400">
+                         2xl:text-9xl tv-4k:text-16xl tv-lg:text-10xl hover:text-red-400">
             {time}
           </p>
           <div className="flex justify-center items-center gap-4 mt-4 tv-lg:gap-10 tv-lg:mt-8">
             <button onClick={handleStart}
               className="flex flex-col items-center text-gray-600 hover:text-gray-800 tv-lg:text-5xl"
             >
-              <PlayCircle size={23} className="2xl:size-10 tv-lg:size-16" />
+              <PlayCircle size={27} className="2xl:size-10 tv-lg:size-16" />
             </button>
 
             <button onClick={handlePause} className="flex flex-col items-center text-yellow-600 hover:text-yellow-800 tv-lg:text-5xl">
-              <PauseCircle size={23} className="2xl:size-10 tv-lg:size-16" />
+              <PauseCircle size={27} className="2xl:size-10 tv-lg:size-16" />
             </button>
 
             <button onClick={handleReset} className="flex flex-col items-center text-red-600 hover:text-red-800 tv-lg:text-5xl">
-              <RotateCcw size={23} className="2xl:size-10 tv-lg:size-16" />
+              <RotateCcw size={27} className="2xl:size-10 tv-lg:size-16" />
             </button>
             <button onClick={handleOpenModal} className="text-lg
                          2xl:text-xl 3xl:text-2xl tv-4k:text-5xl tv-lg:text-3xl">
@@ -70,7 +70,7 @@ export default function TimerCard({setTime, titleTimer, handleStart,
         />
       </div>
       {openModal && (
-        <Modal setTime={setTime} title='Definir o Tempo de Luta' input={true} handleOnPressClose={() => setIsOpen(false)} titleButtonSet={'Confirmar'} titleButtonCancel={'Cancelar'} />
+        <Modal buttonInput={false} setTime={setTime} title='Definir o Tempo de Luta' input={true} handleOnPressClose={() => setIsOpen(false)} titleButtonSet={'Confirmar'} titleButtonCancel={'Cancelar'} />
       )}
     </div>
   )

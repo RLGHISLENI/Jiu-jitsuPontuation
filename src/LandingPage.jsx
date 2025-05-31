@@ -20,7 +20,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   return (
     <>
       {showInstallAlert && (
-        <Modal titleButtonSet='Instalar' titleButtonCancel='Cancelar' title='Instalar Aplicativo' description='Deseja instalar este aplicativo em seu dispositivo?' handleButtonSet={() => {
+        <Modal buttonInput={true} titleButtonSet='Instalar' titleButtonCancel='Cancelar' title='Instalar Aplicativo' description='Deseja instalar este aplicativo em seu dispositivo?' handleButtonSet={() => {
           handleInstall();
           setShowInstallAlert(false)
         }} handleOnPressClose={() => setShowInstallAlert(false)} />

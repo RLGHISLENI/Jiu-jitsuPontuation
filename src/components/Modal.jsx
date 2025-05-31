@@ -9,6 +9,7 @@ export default function Modal({
   titleButtonSet,
   titleButtonCancel,
   input = false,
+  buttonInput = false,
   setTime,
 }) {
   const [inputValue, setInputValue] = useState("");
@@ -77,13 +78,15 @@ export default function Modal({
             </div>
           </div>
         ) : (
-          { description }
+          <div className="text-md tv-lg:text-4xl text-gray-500 mb-3 tv-lg:mb-10">
+            {description}
+          </div>
         )}
 
         {/* Botões */}
         <div className="flex justify-center gap-4 tv-lg:gap-8 tv-lg:text-4xl">
           <button
-            onClick={handleConfirm}
+            onClick={buttonInput ? handleButtonSet : handleConfirm}
             className="px-5 py-2.5 tv-lg:px-10 tv-lg:py-5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             {titleButtonSet}
