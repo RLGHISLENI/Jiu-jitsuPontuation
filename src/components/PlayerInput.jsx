@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Modal from './Modal';
+import { useScore } from './context/ScoreContet';
 
 export default function PlayerInput({
   player,
@@ -6,9 +8,11 @@ export default function PlayerInput({
   textInput,
   borderColor,
   placeholderColor,
+  modal
 }) {
-
+  const {namePlayer1, namePlayer2, setNamePlayer1, setNamePlayer2} = useScore()
   return (
+    <>
     <div
       className={`
         absolute 
@@ -28,7 +32,10 @@ export default function PlayerInput({
       </label>
       <input
         id={player}
-        
+        value={player === "Lutador 1" ? namePlayer1 : namePlayer2}
+        onChange={(e) => {
+          player === "Lutador 1" ? setNamePlayer1(e.target.value) : setNamePlayer2(e.target.value)
+        }}
         type="text"
         placeholder="Digite o nome do atleta"
         className={` tv-4k:max-w-[70rem] lg-4k:max-w-[70rem] tv-lg:max-w-[50rem]
@@ -41,5 +48,6 @@ export default function PlayerInput({
         `}
       />
     </div>
+    </>
   );
 }

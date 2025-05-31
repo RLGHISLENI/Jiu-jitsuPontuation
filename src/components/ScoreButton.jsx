@@ -9,11 +9,11 @@ export default function ScoreButton({ButtonScorePoint, nameBlow, score, buttonCo
       </p>
       <button
         onClick={ButtonScorePoint}
-        className={`w-full 2xl:w-72 md:w-56 flex items-center justify-center cursor-pointer 
+        className={`w-full 2xl:w-72 md:w-52 flex items-center justify-center cursor-pointer 
                    ${buttonColor} text-6xl md:text-9xl font-extrabold border ${borderColorScore} rounded-xl 
                    ring-2 ring-white/40 ${backgroundColorBLows} hover:text-yellow-400 shadow-lg hover:shadow-2xl hover:scale-105 
                    transition-all duration-300
-                   2xl:text-9xl 2xl:py-5 3xl:text-8xl 3xl:py-6 tv-4k:text-17xl tv-4k:w-[45rem] tv-lg:text-15xl tv-lg:w-[25rem]  `} 
+                   2xl:text-10xl 2xl:py-5 3xl:text-8xl 3xl:py-6 tv-4k:text-17xl tv-4k:w-[45rem] tv-lg:text-15xl tv-lg:w-[25rem]  `} 
       >
         <h4>{score}</h4>
       </button>

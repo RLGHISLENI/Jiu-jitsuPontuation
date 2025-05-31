@@ -23,7 +23,12 @@ export default function PlayerSection({
   const [timeLeft, setTimeLeft] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const { getTotalScore } = useScore();
+  const {
+    getTotalScore,
+    namePlayer1,
+    namePlayer2,
+    handleCleaningScore,
+  } = useScore();
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
@@ -42,31 +47,69 @@ export default function PlayerSection({
       }, 1000);
     }
 
+    return () => clearInterval(interval);
+  }, [isRunning, timeLeft]);
+
+  useEffect(() => {
     if (timeLeft === 0 && isRunning) {
       const score1 = getTotalScore("Lutador 1");
       const score2 = getTotalScore("Lutador 2");
 
       if (score1 > score2) {
         Swal.fire({
-          title: "Ganhador da Luta",
+          title: "🏆 Ganhador da Luta",
           icon: "success",
-          confirmButtonTet: "OK",
-          text: "Jogador 1",
+          text: `Jogador cujo nome é ${namePlayer1 ? namePlayer1 : 'Lutador 1'} venceu!`,
+          confirmButtonText: "OK",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            handleCleaningScore("Lutador 1");
+            handleCleaningScore("Lutador 2");
+          }
         });
       } else if (score2 > score1) {
-        alert("O jogador 2 ganhou");
+        Swal.fire({
+          title: "🏆 Ganhador da Luta",
+          icon: "success",
+          text: `Jogador cujo nome é ${namePlayer2 ? namePlayer2 : 'Lutador 2'} venceu!`,
+          confirmButtonText: "OK",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            handleCleaningScore("Lutador 1");
+            handleCleaningScore("Lutador 2");
+          }
+        });
       } else {
-        alert("empate");
+        Swal.fire({
+          title: "Empate",
+          icon: "info",
+          text: "A luta terminou empatada.",
+          confirmButtonText: "OK",
+          allowOutsideClick: false,
+          allowEscapeKey: false,
+          allowEnterKey: false,
+        });
       }
+
       setIsRunning(false);
     }
-
-    return () => clearInterval(interval);
-  }, [isRunning, timeLeft]);
+  }, [timeLeft]);
 
   const handleStart = () => {
-    if (time > 0) {
+    if (time > 0 && timeLeft > 0) {
       setIsRunning(true);
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Tempo inválido",
+        text: "Defina um tempo antes de iniciar a luta.",
+      });
     }
   };
   const handlePause = () => setIsRunning(false);
@@ -102,15 +145,15 @@ export default function PlayerSection({
         </div>
         {showTimer && (
           <div
-            className="flex items-center  justify-center absolute right-12 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
-                         top-16 tv-lg:top-64 tv-4k:top-96 "
+            className="flex items-center  justify-center absolute right-8 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
+                         top-16 tv-lg:top-64 tv-4k:top-96  "
           >
             <TimerCard
               handleStart={handleStart}
               handlePause={handlePause}
               handleReset={handleReset}
               setTime={handleSetTime}
-              titleTimer={isRunning ? "Iniciado" : "Parado"}
+              titleTimer={isRunning && timeLeft > 0 ? "Iniciado" : "Parado"}
               time={formatTime(timeLeft)}
               setIsOpen={setIsOpen}
               handleOpenModal={() => setIsOpen(!isOpen)}
