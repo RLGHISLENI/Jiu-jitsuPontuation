@@ -9,53 +9,92 @@ import Modal from "components/Modal";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
   const [showInstallAlert, setShowInstallAlert] = useState(false);
-  // const [nameAzulPlayer, setNameAzulPlayer] = useState("")
-  // const [nameBrancoPlayer, setNameBrancoPlayer] = useState("")
+
+  // Novo estado do modal de tempo
+  const [timeModalOpen, setTimeModalOpen] = useState(false);
+  const [time, setTime] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0);
+
+  const handleSetTime = (newTimeInSeconds) => {
+    setTime(newTimeInSeconds);
+    setTimeLeft(newTimeInSeconds);
+    setTimeModalOpen(false);
+  };
+
   useEffect(() => {
     if (!disableInstall) {
-      setShowInstallAlert(true); // exibe o alerta automaticamente
+      setShowInstallAlert(true);
     }
   }, [disableInstall]);
 
   return (
     <>
       {showInstallAlert && (
-        <Modal buttonInput={true} titleButtonSet='Instalar' titleButtonCancel='Cancelar' title='Instalar Aplicativo' description='Deseja instalar este aplicativo em seu dispositivo?' handleButtonSet={() => {
-          handleInstall();
-          setShowInstallAlert(false)
-        }} handleOnPressClose={() => setShowInstallAlert(false)} />
+        <Modal
+          buttonInput={true}
+          titleButtonSet="Instalar"
+          titleButtonCancel="Cancelar"
+          title="Instalar Aplicativo"
+          description="Deseja instalar este aplicativo em seu dispositivo?"
+          handleButtonSet={() => {
+            handleInstall();
+            setShowInstallAlert(false);
+          }}
+          handleOnPressClose={() => setShowInstallAlert(false)}
+        />
       )}
+
+      {/* Modal de Definir Tempo */}
+      {timeModalOpen && (
+        <Modal
+          input={true}
+          setTime={handleSetTime}
+          buttonInput={false}
+          title="Definir o Tempo de Luta"
+          titleButtonSet="Confirmar"
+          titleButtonCancel="Cancelar"
+          handleOnPressClose={() => setTimeModalOpen(false)}
+        />
+      )}
+
       <div className="font-sans flex flex-col h-screen">
         <div className="flex flex-col flex-1">
           <div className="flex-1 min-h-0">
-              <PlayerSection
-                buttonColor={"text-white"}
-                textInput={"text-white"}
-                textLabel={"text-white"}
-                placeholderColor={"placeholder-white"}
-                BackGroundColor="bg-gray-900"
-                textColor="text-white"
-                borderColorScore={"border-white"}
-                player={"Lutador 1"}
-                borderColorPunishement={"border-white"}                
-
-              />
+            <PlayerSection
+              // Player 1 props
+              player="Lutador 1"
+              buttonColor="text-white"
+              textInput="text-white"
+              textLabel="text-white"
+              placeholderColor="placeholder-white"
+              BackGroundColor="bg-gray-900"
+              textColor="text-white"
+              borderColorScore="border-white"
+              borderColorPunishement="border-white"
+            />
           </div>
           <div className="flex-1 min-h-0">
-              <PlayerSection
-                player={"Lutador 2"}
-                backgroundColorPunishement={"bg-gray-100"}
-                backgroundColorBLows={"bg-gray-100"}
-                buttonColor={"text-black"}
-                textInput={"text-black"}
-                borderColorScore={"border-black"}
-                textLabel={"text-black"}
-                placeholderColor={"placeholder-black"}
-                BackGroundColor="bg-white"
-                textColor="text-black"
-                borderColorPunishement={"border-black"}
-                showTimer={true}
-              />
+            <PlayerSection
+              // Player 2 props + timer
+              player="Lutador 2"
+              backgroundColorPunishement="bg-gray-100"
+              backgroundColorBLows="bg-gray-100"
+              buttonColor="text-black"
+              textInput="text-black"
+              borderColorScore="border-black"
+              textLabel="text-black"
+              placeholderColor="placeholder-black"
+              BackGroundColor="bg-white"
+              textColor="text-black"
+              borderColorPunishement="border-black"
+              showTimer={true}
+              time={time}
+              timeLeft={timeLeft}
+              setTimeLeft={setTimeLeft}
+              setTime={setTime}
+              setIsOpen={setTimeModalOpen}
+              isOpen={timeModalOpen}
+            />
           </div>
         </div>
       </div>

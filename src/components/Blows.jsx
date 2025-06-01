@@ -17,13 +17,12 @@ export default function Blows({
   const scoresPlayer = player === "Lutador 1" ? scoresPlayer1 : scoresPlayer2
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full 
-                   md:flex md:flex-row 
+    <div className="grid grid-cols-2 grid-rows-2  w-full 
+                   md:flex md:flex-row md:items-start lg:gap-4
                    md:gap-3 2xl:gap-4 tv-lg:gap-6 tv-4k:gap-2 
                    md:w-auto">
       <PlayerInput
         player={player}
-        
         textLabel={textLabel}
         textInput={textInput}
         borderColor={borderColor}
@@ -35,7 +34,7 @@ export default function Blows({
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}
-        nameBlow="Passagem de guarda"
+        nameBlow="Montada / Pegada Pelas Costas"
         score={scoresPlayer[0].score.toString().padStart(2, "0")}
       />
       <ScoreButton
@@ -43,7 +42,7 @@ export default function Blows({
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}
-        nameBlow="Montada Pegada nas Costas"
+        nameBlow="Passsagem de Guarda"
         score={scoresPlayer[1].score.toString().padStart(2, "0")}
       />
       <ScoreButton
@@ -51,7 +50,7 @@ export default function Blows({
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}
-        nameBlow="Queda/Raspagem/Joelho"
+        nameBlow="Queda / Raspagem / Joelho na barriga"
         score={scoresPlayer[2].score.toString().padStart(2, "0")}
       />
     </div>

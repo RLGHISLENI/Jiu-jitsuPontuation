@@ -9,14 +9,12 @@ export default function ScoreButton({
   borderColorScore,
 }) {
   return (
-    <div className="flex flex-col items-center text-center 2xl:mt-40 lg:mt-28 mt-28">
+    <div className="flex flex-col items-center text-center 2xl:mt-40 lg:mt-20 mt-28">
       <p
-        className="text-sm md:text-md font-medium mb-1 md:mb-2
+        className="text-sm md:text-md font-medium mb-1 md:mb-2 break-words lg:max-w-32
                    2xl:text-lg 3xl:text-xl tv-lg:text-3xl tv-4k:text-6xl  tv-4k:mb-10 tv-4k:mt-60 tv-lg:mb-5 tv-lg:mt-28"
       >
-        {" "}
-        {/* Aumenta apenas em telas muito grandes */}
-        {nameBlow}
+       {nameBlow}
       </p>
       <button
         onClick={ButtonScorePoint}

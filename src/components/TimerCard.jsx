@@ -26,7 +26,7 @@ export default function TimerCard({
       {/* Container principal */}
       <div className="flex flex-col items-center justify-center gap-4  2xl:gap-10 3xl:gap-12 tv-lg:gap-12 tv-4k:gap-16">
         {/* TotalScoreCard superior */}
-        <div className="w-48 md:w-30 xl:w-64 2xl:w-96 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[55rem]">
+        <div className="w-48 md:w-30 xl:w-64 2xl:w-96 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem]">
           <TotalScoreCard
             title={"Pontuação Final"}
             player={player}
@@ -35,11 +35,11 @@ export default function TimerCard({
         </div>
 
         {/* Timer */}
-        <div className="bg-gray-100 w-full xl:w-80 max-w-sm md:max-w-md 2xl:max-w-[38rem] 3xl:max-w-[32rem] tv-lg:max-w-[45rem] tv-4k:max-w-[73rem] text-black text-center font-bold rounded-lg">
+        <div className="bg-gray-100 w-full xl:w-80 max-w-sm md:max-w-md 2xl:max-w-[38rem] 3xl:max-w-[32rem] tv-lg:max-w-[45rem] tv-4k:w-[50rem] text-black text-center font-bold rounded-lg">
           <div className="bg-red-600 text-white text-center text-3xl md:text-3xl  lg:text-2xl 2xl:text-5xl font-bold py-2 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl">
             {titleTimer}
           </div>
-          <p className="text-5xl md:text-7xl 2xl:text-9xl tv-4k:text-16xl tv-lg:text-10xl font-extrabold hover:text-red-400 py-1">
+          <p className="text-5xl md:text-7xl 2xl:text-9xl tv-4k:text-15xl tv-lg:text-10xl font-extrabold hover:text-red-400 py-1">
             {time}
           </p>
           <div className="flex justify-center items-center p-2 gap-3 tv-lg:gap-10 mt-1 md:mt-3">
@@ -74,7 +74,7 @@ export default function TimerCard({
         </div>
 
         {/* TotalScoreCard inferior */}
-        <div className="w-48 xl:w-64 md:w-30 lg:w-30 2xl:w-96 3xl:w-80 tv-4k:w-[55rem] tv-lg:w-[35rem]">
+        <div className="w-48 xl:w-64 md:w-30 lg:w-30 2xl:w-96 3xl:w-80 tv-4k:w-[40rem] tv-lg:w-[35rem]">
           <TotalScoreCard
             title={"Pontuação Final"}
             score={totalPlayer2.toString().padStart(2, "0")}
@@ -88,20 +88,7 @@ export default function TimerCard({
                       2xl:-left-80 2xl:w-72 tv-4k:-left-[40rem] tv-lg:-left-[35rem] tv-lg:w-[25rem] 3xl:w-52 tv-4k:w-[40rem]"
       >
         <img src={logo} alt="Logo" className="w-full h-auto object-contain" />
-      </div>
-
-      {/* Modal */}
-      {openModal && (
-        <Modal
-          buttonInput={false}
-          setTime={setTime}
-          title="Definir o Tempo de Luta"
-          input={true}
-          handleOnPressClose={() => setIsOpen(false)}
-          titleButtonSet={"Confirmar"}
-          titleButtonCancel={"Cancelar"}
-        />
-      )}
+      </div>    
     </div>
   );
 }

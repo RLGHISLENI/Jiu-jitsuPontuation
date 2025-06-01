@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 export default function PlayerSection({
   player,
   showTimer,
-  showTotaScorePlayer1,
   backgroundColorPunishement,
   borderColorScore,
   borderColorPunishement,
@@ -18,11 +17,15 @@ export default function PlayerSection({
   placeholderColor,
   BackGroundColor,
   textColor,
+   time,
+  timeLeft,
+  setTimeLeft,
+  setTime,
+  isOpen,
+  setIsOpen,
 }) {
-  const [time, setTime] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(0);
+  
   const [isRunning, setIsRunning] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const {
     getTotalScore,
     namePlayer1,
@@ -145,8 +148,8 @@ export default function PlayerSection({
         </div>
         {showTimer && (
           <div
-            className="flex items-center  justify-center absolute right-8 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
-                         top-16 tv-lg:top-64 tv-4k:top-96  xl:top-40"
+            className="flex items-center  justify-center  absolute right-8 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
+                        lg:-translate-y-1/2 lg:top-80 xl:-translate-y-1/2 tv-4k:top-[70rem] tv-lg:top-64   "
           >
             <TimerCard
               handleStart={handleStart}
@@ -157,7 +160,6 @@ export default function PlayerSection({
               time={formatTime(timeLeft)}
               setIsOpen={setIsOpen}
               handleOpenModal={() => setIsOpen(!isOpen)}
-              openModal={isOpen}
             />
           </div>
         )}
