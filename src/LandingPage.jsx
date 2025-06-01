@@ -9,8 +9,13 @@ import Modal from "components/Modal";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
   const [showInstallAlert, setShowInstallAlert] = useState(false);
-
-  // Novo estado do modal de tempo
+  const {
+    punishementValue1,
+    punishementValue2,
+    handlePunishement,
+    vantagemValue1,
+    vantagemValue2,
+  } = useScore();
   const [timeModalOpen, setTimeModalOpen] = useState(false);
   const [time, setTime] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
@@ -71,6 +76,14 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               textColor="text-white"
               borderColorScore="border-white"
               borderColorPunishement="border-white"
+              punishementValue={punishementValue1}
+              vantagemValue={vantagemValue1}
+              onPressPunishementTrue={() =>
+                handlePunishement("Lutador 1", true)
+              }
+              onPressPunishementFalse={() =>
+                handlePunishement("Lutador 1", false)
+              }
             />
           </div>
           <div className="flex-1 min-h-0">
@@ -94,6 +107,14 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               setTime={setTime}
               setIsOpen={setTimeModalOpen}
               isOpen={timeModalOpen}
+              punishementValue={punishementValue2}
+              vantagemValue={vantagemValue2}
+              onPressPunishementTrue={() =>
+                handlePunishement("Lutador 2", true)
+              }
+              onPressPunishementFalse={() =>
+                handlePunishement("Lutador 2", false)
+              }
             />
           </div>
         </div>

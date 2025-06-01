@@ -13,14 +13,16 @@ export default function Blows({
   borderColor,
   placeholderColor,
 }) {
-  const {handleChangingScores, scoresPlayer1, scoresPlayer2} = useScore()
-  const scoresPlayer = player === "Lutador 1" ? scoresPlayer1 : scoresPlayer2
+  const { handleChangingScores, scoresPlayer1, scoresPlayer2 } = useScore();
+  const scoresPlayer = player === "Lutador 1" ? scoresPlayer1 : scoresPlayer2;
 
   return (
-    <div className="grid grid-cols-2 grid-rows-2  w-full 
+    <div
+      className="grid grid-cols-2 grid-rows-2  w-full 
                    md:flex md:flex-row md:items-start lg:gap-4
-                   md:gap-3 2xl:gap-4 tv-lg:gap-6 tv-4k:gap-2 
-                   md:w-auto">
+                   md:gap-3 2xl:gap-4 tv-lg:gap-6 tv-4k:gap-8 
+                   md:w-auto"
+    >
       <PlayerInput
         player={player}
         textLabel={textLabel}
@@ -31,6 +33,7 @@ export default function Blows({
 
       <ScoreButton
         ButtonScorePoint={() => handleChangingScores(player, 1, 4)}
+        RemoveScorePoint={() => handleChangingScores(player, 1, -4)}
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}
@@ -39,6 +42,7 @@ export default function Blows({
       />
       <ScoreButton
         ButtonScorePoint={() => handleChangingScores(player, 2, 3)}
+        RemoveScorePoint={() => handleChangingScores(player, 2, -3)}
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}
@@ -47,6 +51,7 @@ export default function Blows({
       />
       <ScoreButton
         ButtonScorePoint={() => handleChangingScores(player, 3, 2)}
+        RemoveScorePoint={() => handleChangingScores(player, 3, -2)}
         borderColorScore={borderColorScore}
         backgroundColorBLows={backgroundColorBLows}
         buttonColor={buttonColor}

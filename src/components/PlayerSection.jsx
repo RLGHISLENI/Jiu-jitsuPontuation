@@ -17,20 +17,24 @@ export default function PlayerSection({
   placeholderColor,
   BackGroundColor,
   textColor,
-   time,
+  time,
   timeLeft,
   setTimeLeft,
   setTime,
   isOpen,
   setIsOpen,
+  vantagemValue,
+  onPressPunishementTrue,
+  onPressPunishementFalse,
+  punishementValue,
 }) {
-  
   const [isRunning, setIsRunning] = useState(false);
   const {
     getTotalScore,
     namePlayer1,
     namePlayer2,
     handleCleaningScore,
+    resetValuesPunishment,
   } = useScore();
 
   const formatTime = (seconds) => {
@@ -62,22 +66,26 @@ export default function PlayerSection({
         Swal.fire({
           title: "🏆 Ganhador da Luta",
           icon: "success",
-          text: `Jogador cujo nome é ${namePlayer1 ? namePlayer1 : 'Lutador 1'} venceu!`,
+          text: `Jogador cujo nome é ${
+            namePlayer1 ? namePlayer1 : "Lutador 1"
+          } venceu!`,
           confirmButtonText: "OK",
           allowOutsideClick: false,
           allowEscapeKey: false,
-          allowEnterKey: false,
         }).then((result) => {
           if (result.isConfirmed) {
             handleCleaningScore("Lutador 1");
             handleCleaningScore("Lutador 2");
+            resetValuesPunishment();
           }
         });
       } else if (score2 > score1) {
         Swal.fire({
           title: "🏆 Ganhador da Luta",
           icon: "success",
-          text: `Jogador cujo nome é ${namePlayer2 ? namePlayer2 : 'Lutador 2'} venceu!`,
+          text: `Jogador cujo nome é ${
+            namePlayer2 ? namePlayer2 : "Lutador 2"
+          } venceu!`,
           confirmButtonText: "OK",
           allowOutsideClick: false,
           allowEscapeKey: false,
@@ -86,6 +94,7 @@ export default function PlayerSection({
           if (result.isConfirmed) {
             handleCleaningScore("Lutador 1");
             handleCleaningScore("Lutador 2");
+            resetValuesPunishment();
           }
         });
       } else {
@@ -96,7 +105,6 @@ export default function PlayerSection({
           confirmButtonText: "OK",
           allowOutsideClick: false,
           allowEscapeKey: false,
-          allowEnterKey: false,
         });
       }
 
@@ -132,7 +140,7 @@ export default function PlayerSection({
         <div
           className={`${BackGroundColor} ${textColor} tv-4k:ps-10 tv-lg:ps-6 p-4 md:p-4 lg:p-2 lg:ps-5 flex-1`}
         >
-          <div className="flex flex-col md:flex-row h-full gap-4 md:gap-6 tv-lg:gap-1 tv-4k:gap-1">
+          <div className="flex flex-col md:flex-row h-full gap-4 md:gap-6 tv-lg:gap-1 tv-4k:gap-11">
             <Blows
               player={player}
               backgroundColorBLows={backgroundColorBLows}
@@ -141,6 +149,10 @@ export default function PlayerSection({
               placeholderColor={placeholderColor}
             />
             <AdvantagePunishement
+              onPressPunishementTrue={onPressPunishementTrue}
+              onPressPunishementFalse={onPressPunishementFalse}
+              punishementValue={punishementValue}
+              vantagemValue={vantagemValue}
               borderColorPunishement={borderColorPunishement}
               backgroundColorPunishement={backgroundColorPunishement}
             />
@@ -148,8 +160,8 @@ export default function PlayerSection({
         </div>
         {showTimer && (
           <div
-            className="flex items-center  justify-center  absolute right-8 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
-                        lg:-translate-y-1/2 lg:top-80 xl:-translate-y-1/2 tv-4k:top-[70rem] tv-lg:top-64   "
+            className="flex items-center  justify-center  absolute right-8  2xl:-translate-y-1/4 tv-lg:right-24 tv-4k:right-6 
+                        lg:-translate-y-1/2 lg:top-80 xl:-translate-y-1/2  tv-4k:top-[44rem] tv-lg:top-64   "
           >
             <TimerCard
               handleStart={handleStart}

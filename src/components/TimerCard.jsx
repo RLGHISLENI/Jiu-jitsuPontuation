@@ -35,7 +35,7 @@ export default function TimerCard({
         </div>
 
         {/* Timer */}
-        <div className="bg-gray-100 w-full xl:w-80 max-w-sm md:max-w-md 2xl:max-w-[38rem] 3xl:max-w-[32rem] tv-lg:max-w-[45rem] tv-4k:w-[50rem] text-black text-center font-bold rounded-lg">
+        <div className="bg-gray-200 w-full xl:w-80 max-w-sm md:max-w-md 2xl:w-[80rem] 3xl:max-w-[32rem] tv-lg:max-w-[45rem] tv-4k:max-w-[60rem] text-black text-center font-bold rounded-lg">
           <div className="bg-red-600 text-white text-center text-3xl md:text-3xl  lg:text-2xl 2xl:text-5xl font-bold py-2 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl">
             {titleTimer}
           </div>
@@ -47,21 +47,21 @@ export default function TimerCard({
               onClick={handleStart}
               className="flex flex-col items-center text-gray-600 hover:text-gray-800 text-2xl md:text-3xl tv-lg:text-5xl"
             >
-              <PlayCircle size={27} className="md:size-27 tv-lg:size-16" />
+              <PlayCircle size={27} className="md:size-27 2xl:size-10 tv-lg:size-16" />
             </button>
 
             <button
               onClick={handlePause}
               className="flex flex-col items-center text-yellow-600 hover:text-yellow-800 text-2xl md:text-3xl tv-lg:text-5xl"
             >
-              <PauseCircle size={27} className="md:size-27 tv-lg:size-16" />
+              <PauseCircle size={27} className="md:size-27 2xl:size-10 tv-lg:size-16" />
             </button>
 
             <button
               onClick={handleReset}
               className="flex flex-col items-center text-red-600 hover:text-red-800 text-2xl md:text-3xl tv-lg:text-5xl"
             >
-              <RotateCcw size={27} className="md:size-27 tv-lg:size-16" />
+              <RotateCcw size={27} className="md:size-27 2xl:size-10 tv-lg:size-16" />
             </button>
 
             <button
