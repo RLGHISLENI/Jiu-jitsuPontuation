@@ -23,6 +23,7 @@ export default function Blows({
                    md:w-auto">
       <PlayerInput
         player={player}
+        
         textLabel={textLabel}
         textInput={textInput}
         borderColor={borderColor}

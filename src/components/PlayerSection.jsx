@@ -127,7 +127,7 @@ export default function PlayerSection({
     <section className="h-full">
       <div className="bg-white h-full flex">
         <div
-          className={`${BackGroundColor} ${textColor} tv-4k:ps-10 tv-lg:ps-6 p-4 md:p-4 flex-1`}
+          className={`${BackGroundColor} ${textColor} tv-4k:ps-10 tv-lg:ps-6 p-4 md:p-4 lg:p-2 lg:ps-5 flex-1`}
         >
           <div className="flex flex-col md:flex-row h-full gap-4 md:gap-6 tv-lg:gap-1 tv-4k:gap-1">
             <Blows
@@ -146,7 +146,7 @@ export default function PlayerSection({
         {showTimer && (
           <div
             className="flex items-center  justify-center absolute right-8 2xl:top-36 tv-lg:right-24 tv-4k:right-6 
-                         top-16 tv-lg:top-64 tv-4k:top-96  "
+                         top-16 tv-lg:top-64 tv-4k:top-96  xl:top-40"
           >
             <TimerCard
               handleStart={handleStart}

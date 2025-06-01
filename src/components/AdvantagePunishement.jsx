@@ -23,19 +23,19 @@ export default function AdvantagePunishement({
           onClick={() => handlePunishement(true)}
           className={`${backgroundColorPunishement} w-full md:w-[130%] text-yellow-400 text-3xl md:text-4xl font-extrabold border ${borderColorPunishement} rounded-xl
           ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300
-          flex items-center justify-center cursor-pointer 2xl:text-6xl 2xl:w-60 tv-4k:text-8xl tv-lg:text-7xl`}
+          flex items-center justify-center cursor-pointer tv-4k:text-8xl tv-lg:text-7xl`}
         >
           {punishementValue.toString().padStart(2, "0")}
         </button>
       </div>
 
       <div className="flex flex-col items-center md:items-center text-center md:text-right ">
-        <p className="text-xs md:text-xl mt-2 tv-4k:mb-5 tv-4k:text-6xl tv-lg:text-4xl tv-lg:mb-5">Punição</p>
+        <p className="text-xs md:text-xl mt-2 tv-4k:mb-5 tv-4k:text-6xl tv-lg:text-4xl tv-lg:mb-5 ">Punição</p>
         <button
           onClick={() => handlePunishement(false)}
           className={`${backgroundColorPunishement} w-full md:w-[160%] text-red-400 text-3xl md:text-4xl font-extrabold border ${borderColorPunishement} rounded-xl
           ring-2 ring-white/40 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300
-          flex items-center justify-center cursor-pointer tv-4k:text-8xl 2xl:text-6xl 2xl:w-60  tv-lg:text-7xl`}
+          flex items-center justify-center cursor-pointer tv-4k:text-8xl tv-lg:text-7xl`}
         >
           {vantagemValue.toString().padStart(2, "0")}
         </button>
