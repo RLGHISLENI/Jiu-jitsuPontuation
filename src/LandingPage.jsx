@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "./assets/logo3.png";
 import Blows from "components/Blows";
 import PlayerInput from "components/PlayerInput";
@@ -6,6 +6,8 @@ import PlayerSection from "components/PlayerSection";
 import TimerCard from "components/TimerCard";
 import { ScoreProvider, useScore } from "components/context/ScoreContet";
 import Modal from "components/Modal";
+import Swal from "sweetalert2";
+import defaultLogo from "./assets/logo3.png";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
   const [showInstallAlert, setShowInstallAlert] = useState(false);
@@ -15,6 +17,10 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
     handlePunishement,
     vantagemValue1,
     vantagemValue2,
+    namePlayer1,
+    namePlayer2,
+    resetValuesPunishment,
+    handleCleaningScore,
   } = useScore();
   const [timeModalOpen, setTimeModalOpen] = useState(false);
   const [time, setTime] = useState(0);
@@ -24,6 +30,83 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
     setTime(newTimeInSeconds);
     setTimeLeft(newTimeInSeconds);
     setTimeModalOpen(false);
+  };
+
+  const handleWinner = (player) => {
+    if (player === "Lutador 1") {
+      Swal.fire({
+        title: "🏆 Ganhador da Luta",
+        icon: "success",
+        text: `Jogador cujo nome é ${
+          namePlayer1 ? namePlayer1 : "Lutador 1"
+        } venceu!`,
+        confirmButtonText: "OK",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleCleaningScore("Lutador 1");
+          handleCleaningScore("Lutador 2");
+          resetValuesPunishment();
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "🏆 Ganhador da Luta",
+        icon: "success",
+        text: `Jogador cujo nome é ${
+          namePlayer2 ? namePlayer2 : "Lutador 2"
+        } venceu!`,
+        confirmButtonText: "OK",
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          handleCleaningScore("Lutador 1");
+          handleCleaningScore("Lutador 2");
+          resetValuesPunishment();
+        }
+      });
+    }
+  };
+
+  const [logoSrc, setLogoSrc] = useState(() => {
+    const savedLogo = localStorage.getItem("customLogo");
+    return savedLogo ? savedLogo : defaultLogo;
+  });
+
+  const [showLogoModal, setShowLogoModal] = useState(false);
+  const [tempLogo, setTempLogo] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setTempLogo(reader.result);
+      setShowLogoModal(true);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleOpenLogoModal = () => {
+  fileInputRef.current?.click(); // isso abre o seletor de arquivos
+};
+
+  const confirmLogoChange = () => {
+    if (tempLogo) {
+      setLogoSrc(tempLogo);
+      localStorage.setItem("customLogo", tempLogo);
+      setTempLogo(null);
+    }
+    setShowLogoModal(false);
+  };
+
+  const resetToDefaultLogo = () => {
+    setLogoSrc(defaultLogo);
+    localStorage.removeItem("customLogo");
+    setShowLogoModal(false);
   };
 
   useEffect(() => {
@@ -61,6 +144,51 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           handleOnPressClose={() => setTimeModalOpen(false)}
         />
       )}
+      {showLogoModal && (
+        <Modal
+          title="Alterar Logo"
+          description="Confirme a nova logo ou cancele para manter a atual."
+          input={false}
+          handleOnPressClose={() => {
+            setShowLogoModal(false);
+            setTempLogo(null);
+          }}
+          customContent={
+            <div className="flex flex-col items-center space-y-4">
+              {tempLogo && (
+                <img
+                  src={tempLogo}
+                  alt="Prévia da nova logo"
+                  className="w-40 h-auto object-contain rounded border"
+                />
+              )}
+              <div className="flex space-x-4">
+                <button
+                  onClick={confirmLogoChange}
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+                >
+                  Confirmar
+                </button>
+                <button
+                  onClick={() => {
+                    setShowLogoModal(false);
+                    setTempLogo(null);
+                  }}
+                  className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={resetToDefaultLogo}
+                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
+                >
+                  Resetar para padrão
+                </button>
+              </div>
+            </div>
+          }
+        />
+      )}
 
       <div className="font-sans flex flex-col h-screen">
         <div className="flex flex-col flex-1">
@@ -73,10 +201,13 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               textLabel="text-white"
               placeholderColor="placeholder-white"
               BackGroundColor="bg-gray-900"
+              handleOpenModal={() => setShowLogoModal(true)}
               textColor="text-white"
               borderColorScore="border-white"
               borderColorPunishement="border-white"
               punishementValue={punishementValue1}
+              nameWinner="Ganhador 1"
+              onPressWinner={() => handleWinner("Lutador 1")}
               vantagemValue={vantagemValue1}
               onPressPunishementTrue={() =>
                 handlePunishement("Lutador 1", true)
@@ -90,6 +221,8 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
             <PlayerSection
               // Player 2 props + timer
               player="Lutador 2"
+              nameWinner="Ganhador 2"
+              onPressWinner={() => handleWinner("Lutador 2")}
               backgroundColorPunishement="bg-gray-100"
               backgroundColorBLows="bg-gray-100"
               buttonColor="text-black"

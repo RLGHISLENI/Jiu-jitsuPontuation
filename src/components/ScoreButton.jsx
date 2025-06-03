@@ -9,32 +9,10 @@ export default function ScoreButton({
   backgroundColorBLows,
   borderColorScore,
 }) {
-  const ctrlAndEPressedRef = useRef(false)
+  
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.ctrlKey && e.key.toLowerCase() === 'e') {
-        ctrlAndEPressedRef.current = true
-      }
-    }
-
-    const handleKeyUp = (e) => {
-      if (e.key.toLowerCase() === 'e' || e.key === 'Control') {
-        ctrlAndEPressedRef.current = false
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-    window.addEventListener("keyup", handleKeyUp)
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-      window.removeEventListener("keyup", handleKeyUp)
-    }
-  }, [])
-
-  const handleClick = () => {
-    if (ctrlAndEPressedRef.current) {
+  const handleClick = (e) => {
+    if (e.ctrlKey) {
       RemoveScorePoint() // Ctrl+E+Click
     } else {
       ButtonScorePoint() // Click normal ou Ctrl sozinho
@@ -47,7 +25,7 @@ export default function ScoreButton({
         className="text-sm md:text-md font-medium mb-1 md:mb-2 lg:break-words lg:max-w-32
                    2xl:text-sm 2xl:max-w-80 3xl:text-xl tv-lg:text-3xl tv-4k:max-w-[60rem] tv-4k:text-4xl  tv-4k:mb-10 tv-4k:mt-60 tv-lg:mb-5 tv-lg:mt-28"
       >
-       {nameBlow}
+        {nameBlow}
       </p>
       <button
         onClick={handleClick}

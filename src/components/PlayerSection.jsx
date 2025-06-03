@@ -24,9 +24,14 @@ export default function PlayerSection({
   isOpen,
   setIsOpen,
   vantagemValue,
+  nameWinner,
+  onPressWinner,
   onPressPunishementTrue,
   onPressPunishementFalse,
+  handleOpenModal,
   punishementValue,
+  handleOpenLogoModal,
+  winnerChosen,
 }) {
   const [isRunning, setIsRunning] = useState(false);
   const {
@@ -57,61 +62,6 @@ export default function PlayerSection({
     return () => clearInterval(interval);
   }, [isRunning, timeLeft]);
 
-  useEffect(() => {
-    if (timeLeft === 0 && isRunning) {
-      const score1 = getTotalScore("Lutador 1");
-      const score2 = getTotalScore("Lutador 2");
-
-      if (score1 > score2) {
-        Swal.fire({
-          title: "🏆 Ganhador da Luta",
-          icon: "success",
-          text: `Jogador cujo nome é ${
-            namePlayer1 ? namePlayer1 : "Lutador 1"
-          } venceu!`,
-          confirmButtonText: "OK",
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            handleCleaningScore("Lutador 1");
-            handleCleaningScore("Lutador 2");
-            resetValuesPunishment();
-          }
-        });
-      } else if (score2 > score1) {
-        Swal.fire({
-          title: "🏆 Ganhador da Luta",
-          icon: "success",
-          text: `Jogador cujo nome é ${
-            namePlayer2 ? namePlayer2 : "Lutador 2"
-          } venceu!`,
-          confirmButtonText: "OK",
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-          allowEnterKey: false,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            handleCleaningScore("Lutador 1");
-            handleCleaningScore("Lutador 2");
-            resetValuesPunishment();
-          }
-        });
-      } else {
-        Swal.fire({
-          title: "Empate",
-          icon: "info",
-          text: "A luta terminou empatada.",
-          confirmButtonText: "OK",
-          allowOutsideClick: false,
-          allowEscapeKey: false,
-        });
-      }
-
-      setIsRunning(false);
-    }
-  }, [timeLeft]);
-
   const handleStart = () => {
     if (time > 0 && timeLeft > 0) {
       setIsRunning(true);
@@ -136,46 +86,59 @@ export default function PlayerSection({
 
   return (
     <section className="h-full">
-      <div className="bg-white h-full flex">
-        <div
-          className={`${BackGroundColor} ${textColor} tv-4k:ps-10 tv-lg:ps-6 p-4 md:p-4 lg:p-2 lg:ps-5 flex-1`}
-        >
-          <div className="flex flex-col md:flex-row h-full gap-4 md:gap-6 tv-lg:gap-1 tv-4k:gap-11">
-            <Blows
-              player={player}
-              backgroundColorBLows={backgroundColorBLows}
-              buttonColor={buttonColor}
-              borderColorScore={borderColorScore}
-              placeholderColor={placeholderColor}
-            />
-            <AdvantagePunishement
-              onPressPunishementTrue={onPressPunishementTrue}
-              onPressPunishementFalse={onPressPunishementFalse}
-              punishementValue={punishementValue}
-              vantagemValue={vantagemValue}
-              borderColorPunishement={borderColorPunishement}
-              backgroundColorPunishement={backgroundColorPunishement}
-            />
+    <div className="bg-white h-full flex">
+      <div className={`${BackGroundColor} ${textColor} p-4 flex-1 h-full`}>
+        <div className="flex flex-col gap-4">
+          {/* Container principal com justify-between para ocupar todo o espaço */}
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
+            {/* Container dos componentes Blows e AdvantagePunishement */}
+            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
+              {/* Blows */}
+              <div className="shrink-0">
+                <Blows
+                  player={player}
+                  backgroundColorBLows={backgroundColorBLows}
+                  buttonColor={buttonColor}
+                  borderColorScore={borderColorScore}
+                  placeholderColor={placeholderColor}
+                />
+              </div>
+
+              {/* AdvantagePunishement */}
+              <div className="shrink-0">
+                <AdvantagePunishement
+                  onPressPunishementTrue={onPressPunishementTrue}
+                  onPressPunishementFalse={onPressPunishementFalse}
+                  punishementValue={punishementValue}
+                  onPressWinner={onPressWinner}
+                  vantagemValue={vantagemValue}
+                  nameWinner={nameWinner}
+                  borderColorPunishement={borderColorPunishement}
+                  backgroundColorPunishement={backgroundColorPunishement}
+                />
+              </div>
+            </div>
+
+            {/* TimerCard - posicionado à direita com margem automática */}
+            {showTimer && (
+              <div className="h-0 ml-auto lg:ml-0 flex items-end justify-center mt-[20%]"> {/* ml-auto empurra para a direita */}
+                <TimerCard
+                  handleStart={handleStart}
+                  handlePause={handlePause}
+                  handleReset={handleReset}
+                  setTime={handleSetTime}
+                  titleTimer={isRunning && timeLeft > 0 ? "Iniciado" : "Parado"}
+                  time={formatTime(timeLeft)}
+                  setIsOpen={setIsOpen}
+                  handleOpenModal={() => setIsOpen(!isOpen)}
+                  handleOpenLogoModal={handleOpenLogoModal}
+                />
+              </div>
+            )}
           </div>
         </div>
-        {showTimer && (
-          <div
-            className="flex items-center  justify-center  absolute right-8  2xl:-translate-y-1/4 tv-lg:right-24 tv-4k:right-6 
-                        lg:-translate-y-1/2 lg:top-80 xl:-translate-y-1/2  tv-4k:top-[44rem] tv-lg:top-64   "
-          >
-            <TimerCard
-              handleStart={handleStart}
-              handlePause={handlePause}
-              handleReset={handleReset}
-              setTime={handleSetTime}
-              titleTimer={isRunning && timeLeft > 0 ? "Iniciado" : "Parado"}
-              time={formatTime(timeLeft)}
-              setIsOpen={setIsOpen}
-              handleOpenModal={() => setIsOpen(!isOpen)}
-            />
-          </div>
-        )}
       </div>
-    </section>
+    </div>
+  </section>
   );
 }
