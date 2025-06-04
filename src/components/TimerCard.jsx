@@ -31,11 +31,10 @@ export default function TimerCard({
    <div className="flex justify-center items-center mt-4 lg:mt-0 max-w-[150px] md:max-w-[150px] lg:max-w-[200px] tv-lg:max-w-[240px]">
   <button onClick={handleOpenLogoModal} className="w-full">
     <img
-  src={logoSrc}
-  alt="Logo"
-  className="w-full h-auto object-contain max-w-full"
-   // Fallback explícito
-/>
+      src={logoSrc}
+      alt="Logo"
+      className="w-full h-auto object-contain max-w-full"
+    />
   </button>
 </div>
 
