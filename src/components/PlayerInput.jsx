@@ -42,8 +42,8 @@ export default function PlayerInput({
               value={player === "Lutador 1" ? namePlayer1 : namePlayer2}
               onChange={(e) => {
                 player === "Lutador 1"
-                  ? setNamePlayer1(e.target.value)
-                  : setNamePlayer2(e.target.value);
+                  ? setNamePlayer1(e.target.value.toUpperCase())
+                  : setNamePlayer2(e.target.value.toUpperCase())
               }}
               type="text"
               placeholder="Digite o nome do atleta"

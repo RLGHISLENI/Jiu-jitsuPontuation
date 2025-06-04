@@ -31,10 +31,8 @@ export default function PlayerSection({
   handleOpenModal,
   punishementValue,
   handleOpenLogoModal,
-  
 }) {
   const [isRunning, setIsRunning] = useState(false);
-
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
@@ -47,8 +45,8 @@ export default function PlayerSection({
   useEffect(() => {
     window.addEventListener("keydown", handlePause);
     return () => window.removeEventListener("keydown", handlePause);
-  }, [])
-  
+  }, []);
+
   useEffect(() => {
     let interval;
 
@@ -73,9 +71,14 @@ export default function PlayerSection({
     }
   };
   const handlePause = (e) => {
-    if(e.code === "Space") {
-      e.preventDefault()
-      setIsRunning((prev) => !prev)
+    const isTyping =
+      e.target.tagName === "INPUT" ||
+      e.target.tagName === "TEXTAREA" ||
+      e.target.isContentEditable;
+
+    if (!isTyping && e.code === "Space") {
+      e.preventDefault();
+      setIsRunning((prev) => !prev);
     }
   };
   const handleReset = () => {
@@ -90,11 +93,11 @@ export default function PlayerSection({
 
   return (
     <section className="h-full">
-    <div className="bg-white h-full flex">
-      <div className={`${BackGroundColor} ${textColor} p-4 flex-1 h-full`}>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
-            <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
+      <div className="bg-white h-full flex">
+        <div className={`${BackGroundColor} ${textColor} p-4 flex-1 h-full`}>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
+              <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
                 <Blows
                   player={player}
                   backgroundColorBLows={backgroundColorBLows}
@@ -115,28 +118,32 @@ export default function PlayerSection({
                   borderColorPunishement={borderColorPunishement}
                   backgroundColorPunishement={backgroundColorPunishement}
                 />
-            </div>
-
-            {/* TimerCard - posicionado à direita com margem automática */}
-            {showTimer && (
-              <div className="h-0 ml-auto lg:ml-0 flex items-end justify-center mt-[20%]"> {/* ml-auto empurra para a direita */}
-                <TimerCard
-                  handleStart={handleStart}
-                  handlePause={(e) => handlePause(e)}
-                  handleReset={handleReset}
-                  setTime={handleSetTime}
-                  titleTimer={isRunning && timeLeft > 0 ? "Iniciado" : "Parado"}
-                  time={formatTime(timeLeft)}
-                  setIsOpen={setIsOpen}
-                  handleOpenModal={() => setIsOpen(!isOpen)}
-                  handleOpenLogoModal={handleOpenLogoModal}
-                />
               </div>
-            )}
+
+              {/* TimerCard - posicionado à direita com margem automática */}
+              {showTimer && (
+                <div className="h-0 ml-auto lg:ml-0 flex items-end justify-center mt-[20%]">
+                  {" "}
+                  {/* ml-auto empurra para a direita */}
+                  <TimerCard
+                    handleStart={handleStart}
+                    handlePause={(e) => handlePause(e)}
+                    handleReset={handleReset}
+                    setTime={handleSetTime}
+                    titleTimer={
+                      isRunning && timeLeft > 0 ? "Iniciado" : "Parado"
+                    }
+                    time={formatTime(timeLeft)}
+                    setIsOpen={setIsOpen}
+                    handleOpenModal={() => setIsOpen(!isOpen)}
+                    handleOpenLogoModal={handleOpenLogoModal}
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   );
 }
