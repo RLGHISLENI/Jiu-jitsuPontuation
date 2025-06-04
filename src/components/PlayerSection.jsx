@@ -19,6 +19,7 @@ export default function PlayerSection({
   textColor,
   time,
   timeLeft,
+  borderButton,
   setTimeLeft,
   setTime,
   isOpen,
@@ -99,6 +100,7 @@ export default function PlayerSection({
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
               <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
                 <Blows
+                borderButton={borderButton}
                   player={player}
                   backgroundColorBLows={backgroundColorBLows}
                   buttonColor={buttonColor}

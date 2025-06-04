@@ -9,6 +9,7 @@ export default function PlayerInput({
   borderColor,
   placeholderColor,
   modal,
+  borderButton,
   nameWinner,
   onPressWinner,
 }) {
@@ -58,7 +59,7 @@ export default function PlayerInput({
             <button
               onClick={onPressWinner}
               className={`
-            md:w-32 lg:w-44 text-green-400 text-xl md:text-2xl lg:text-lg tv-lg:text-4xl tv-4k:text-6xl
+            md:w-32 lg:w-44 ${borderButton} text-green-400 text-xl md:text-2xl lg:text-lg tv-lg:text-4xl tv-4k:text-6xl
             font-bold border rounded-xl ring-2 ring-white/40 shadow-md hover:shadow-2xl
             flex items-center justify-center cursor-pointer hover:scale-105 transition-all duration-300`}
             >

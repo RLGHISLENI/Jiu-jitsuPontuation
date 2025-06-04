@@ -13,6 +13,7 @@ export default function Blows({
   borderColor,
   placeholderColor,
   onPressWinner,
+  borderButton,
   nameWinner
 }) {
   const { handleChangingScores, scoresPlayer1, scoresPlayer2 } = useScore();
@@ -28,6 +29,7 @@ export default function Blows({
       <PlayerInput
         nameWinner={nameWinner}
         player={player}
+        borderButton={borderButton}
         onPressWinner={onPressWinner}
         textLabel={textLabel}
         textInput={textInput}

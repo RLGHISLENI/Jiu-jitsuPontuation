@@ -206,6 +206,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               borderColorScore="border-white"
               borderColorPunishement="border-white"
               punishementValue={punishementValue1}
+              borderButton="border-white"
               nameWinner="Ganhador 1"
               onPressWinner={() => handleWinner("Lutador 1")}
               vantagemValue={vantagemValue1}
@@ -234,6 +235,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               textColor="text-black"
               borderColorPunishement="border-black"
               showTimer={true}
+              borderButton="border-black"
               time={time}
               timeLeft={timeLeft}
               setTimeLeft={setTimeLeft}
