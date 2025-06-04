@@ -209,11 +209,11 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               nameWinner="Ganhador 1"
               onPressWinner={() => handleWinner("Lutador 1")}
               vantagemValue={vantagemValue1}
-              onPressPunishementTrue={() =>
-                handlePunishement("Lutador 1", true)
+              onPressPunishementTrue={(e) =>
+                handlePunishement("Lutador 1", true, e)
               }
-              onPressPunishementFalse={() =>
-                handlePunishement("Lutador 1", false)
+              onPressPunishementFalse={(e) =>
+                handlePunishement("Lutador 1", false, e)
               }
             />
           </div>
@@ -242,11 +242,11 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               isOpen={timeModalOpen}
               punishementValue={punishementValue2}
               vantagemValue={vantagemValue2}
-              onPressPunishementTrue={() =>
-                handlePunishement("Lutador 2", true)
+              onPressPunishementTrue={(e) =>
+                handlePunishement("Lutador 2", true, e)
               }
-              onPressPunishementFalse={() =>
-                handlePunishement("Lutador 2", false)
+              onPressPunishementFalse={(e) =>
+                handlePunishement("Lutador 2", false, e)
               }
             />
           </div>

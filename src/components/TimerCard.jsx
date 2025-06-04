@@ -89,14 +89,14 @@ export default function TimerCard({
       </div>
 
       {/* Logo clicável */}
-      <div
+      {/* <div
         className="absolute -left-40 top-1/2 transform -translate-y-1/3 w-32 hidden opacity-80 md:block
                   2xl:-left-80 2xl:w-72 tv-4k:-left-[40rem] tv-lg:-left-[35rem] tv-lg:w-[25rem] 3xl:w-52 tv-4k:w-[40rem]"
       >
         <button onClick={handleOpenLogoModal}>
           <img src={logoSrc} alt="Logo" className="w-full h-auto object-contain" />
         </button>
-      </div>
+      </div> */}
 
       
     </div>

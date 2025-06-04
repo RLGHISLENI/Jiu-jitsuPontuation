@@ -6,7 +6,7 @@ export default function AdvantagePunishement({
 }) {
   
   return (
-    <div className="grid grid-cols-1 w-24 md:flex md:flex-col md:items-center md:w-auto mt-28 2xl:mt-48 lg:mt-24 tv-4k:gap-5 tv-4k:w-96 tv-4k:mt-[26rem] tv-lg:gap-1 tv-lg:w-64 tv-lg:mt-[18rem]">
+    <div className="grid grid-cols-1 w-24 md:flex md:flex-col md:items-center md:w-auto mt-auto">
       <div className=" flex flex-col items-center md:items-center text-center md:text-right">
         <p className="text-xs md:text-xl mb-2 tv-4k:text-5xl tv-lg:text-4xl tv-4k:mb-5 tv-lg:mb-5">Vantagem</p>
         <button

@@ -31,16 +31,10 @@ export default function PlayerSection({
   handleOpenModal,
   punishementValue,
   handleOpenLogoModal,
-  winnerChosen,
+  
 }) {
   const [isRunning, setIsRunning] = useState(false);
-  const {
-    getTotalScore,
-    namePlayer1,
-    namePlayer2,
-    handleCleaningScore,
-    resetValuesPunishment,
-  } = useScore();
+
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60)
@@ -50,6 +44,11 @@ export default function PlayerSection({
     return `${mins}:${secs}`;
   };
 
+  useEffect(() => {
+    window.addEventListener("keydown", handlePause);
+    return () => window.removeEventListener("keydown", handlePause);
+  }, [])
+  
   useEffect(() => {
     let interval;
 
@@ -73,7 +72,12 @@ export default function PlayerSection({
       });
     }
   };
-  const handlePause = () => setIsRunning(false);
+  const handlePause = (e) => {
+    if(e.code === "Space") {
+      e.preventDefault()
+      setIsRunning((prev) => !prev)
+    }
+  };
   const handleReset = () => {
     setIsRunning(false);
     setTimeLeft(0);
@@ -89,23 +93,18 @@ export default function PlayerSection({
     <div className="bg-white h-full flex">
       <div className={`${BackGroundColor} ${textColor} p-4 flex-1 h-full`}>
         <div className="flex flex-col gap-4">
-          {/* Container principal com justify-between para ocupar todo o espaço */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
-            {/* Container dos componentes Blows e AdvantagePunishement */}
             <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
-              {/* Blows */}
-              <div className="shrink-0">
                 <Blows
                   player={player}
                   backgroundColorBLows={backgroundColorBLows}
                   buttonColor={buttonColor}
                   borderColorScore={borderColorScore}
                   placeholderColor={placeholderColor}
+                  nameWinner={nameWinner}
+                  onPressWinner={onPressWinner}
                 />
-              </div>
 
-              {/* AdvantagePunishement */}
-              <div className="shrink-0">
                 <AdvantagePunishement
                   onPressPunishementTrue={onPressPunishementTrue}
                   onPressPunishementFalse={onPressPunishementFalse}
@@ -116,7 +115,6 @@ export default function PlayerSection({
                   borderColorPunishement={borderColorPunishement}
                   backgroundColorPunishement={backgroundColorPunishement}
                 />
-              </div>
             </div>
 
             {/* TimerCard - posicionado à direita com margem automática */}
@@ -124,7 +122,7 @@ export default function PlayerSection({
               <div className="h-0 ml-auto lg:ml-0 flex items-end justify-center mt-[20%]"> {/* ml-auto empurra para a direita */}
                 <TimerCard
                   handleStart={handleStart}
-                  handlePause={handlePause}
+                  handlePause={(e) => handlePause(e)}
                   handleReset={handleReset}
                   setTime={handleSetTime}
                   titleTimer={isRunning && timeLeft > 0 ? "Iniciado" : "Parado"}

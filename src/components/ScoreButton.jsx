@@ -20,7 +20,7 @@ export default function ScoreButton({
   }
 
   return (
-    <div className="flex flex-col items-center text-center 2xl:mt-40 lg:mt-20 mt-28">
+    <div className="flex flex-col items-center text-center 2xl:mt-20 lg:mt-14 ">
       <p
         className="text-sm md:text-md font-medium mb-1 md:mb-2 lg:break-words lg:max-w-32
                    2xl:text-sm 2xl:max-w-80 3xl:text-xl tv-lg:text-3xl tv-4k:max-w-[60rem] tv-4k:text-4xl  tv-4k:mb-10 tv-4k:mt-60 tv-lg:mb-5 tv-lg:mt-28"

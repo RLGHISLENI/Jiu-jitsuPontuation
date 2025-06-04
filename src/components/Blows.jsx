@@ -12,6 +12,8 @@ export default function Blows({
   textInput,
   borderColor,
   placeholderColor,
+  onPressWinner,
+  nameWinner
 }) {
   const { handleChangingScores, scoresPlayer1, scoresPlayer2 } = useScore();
   const scoresPlayer = player === "Lutador 1" ? scoresPlayer1 : scoresPlayer2;
@@ -24,7 +26,9 @@ export default function Blows({
                    md:w-auto"
     >
       <PlayerInput
+        nameWinner={nameWinner}
         player={player}
+        onPressWinner={onPressWinner}
         textLabel={textLabel}
         textInput={textInput}
         borderColor={borderColor}
@@ -58,6 +62,7 @@ export default function Blows({
         nameBlow="Queda / Raspagem / Joelho na barriga"
         score={scoresPlayer[2].score.toString().padStart(2, "0")}
       />
+      
     </div>
   );
 }

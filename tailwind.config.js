@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       screens: {
         "tv-lg": "2560px",
+        "3xl" : "1980px",
+
         "tv-4k": "3840px",
         xga: { raw: "(min-width: 1024px) and (max-height: 700px)" },
       }, // TVs 1024x600      }
