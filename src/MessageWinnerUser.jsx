@@ -42,23 +42,15 @@ const VictoryModal = ({ playerWinner, winnerName, onClose }) => {
       {/* Conteúdo central */}
       <div className="w-full max-w-4xl mx-auto animate-fadeIn">
         <h1
-          className={`${
-            isPlayer1
-              ? "text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
-              : "text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
-          } font-bold ${
+          className={`text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold ${
             isPlayer1 ? "text-white" : "text-black"
           } mb-8 md:mb-12 animate-pulse`}
         >
-          VENCEDOR 
+          VENCEDOR
         </h1>
 
         <h2
-          className={`${
-            isPlayer1
-              ? "text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
-              : "text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
-          } font-extrabold ${
+          className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold ${
             isPlayer1 ? "text-white" : "text-black"
           } mb-10 md:mb-16 animate-float`}
         >
