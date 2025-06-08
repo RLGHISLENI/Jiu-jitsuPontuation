@@ -20,6 +20,7 @@ export default function PlayerSection({
   time,
   timeLeft,
   borderButton,
+  logoSrc,
   setTimeLeft,
   setTime,
   isOpen,
@@ -100,7 +101,7 @@ export default function PlayerSection({
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
               <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 xl:gap-8">
                 <Blows
-                borderButton={borderButton}
+                  borderButton={borderButton}
                   player={player}
                   backgroundColorBLows={backgroundColorBLows}
                   buttonColor={buttonColor}
@@ -124,7 +125,7 @@ export default function PlayerSection({
 
               {/* TimerCard - posicionado à direita com margem automática */}
               {showTimer && (
-                <div className="h-0 ml-auto lg:ml-0 flex items-end justify-center mt-[20%]">
+                <div className="h-0 lg:ml-0 flex items-end justify-center mt-[20%]">
                   {" "}
                   {/* ml-auto empurra para a direita */}
                   <TimerCard
@@ -138,6 +139,7 @@ export default function PlayerSection({
                     time={formatTime(timeLeft)}
                     setIsOpen={setIsOpen}
                     handleOpenModal={() => setIsOpen(!isOpen)}
+                    logoSrc={logoSrc}
                     handleOpenLogoModal={handleOpenLogoModal}
                   />
                 </div>

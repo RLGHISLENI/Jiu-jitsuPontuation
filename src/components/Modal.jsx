@@ -11,6 +11,7 @@ export default function Modal({
   input = false,
   buttonInput = false,
   setTime,
+  customContent,   // nova prop para conteúdo customizado
 }) {
   const [inputValue, setInputValue] = useState("");
 
@@ -53,52 +54,60 @@ export default function Modal({
           </button>
         </div>
 
-        {input ? (
-          <div className="mb-6">
-            <p className="text-xs tv-lg:text-4xl text-gray-500 mb-3 tv-lg:mb-10">
-              Escolha o tempo total da luta em minutos ou segundos.
-            </p>
-            <div className="relative">
-              <input
-                value={inputValue}
-                onChange={(e) => {
-                  setInputValue(
-                    e.target.value.replace(/[^0-9:]/g, "").slice(0, 5)
-                  );
-                }}
-                id="fight-time"
-                min="1"
-                max="60"
-                placeholder="MM:SS"
-                className="w-full px-4 py-2 tv-lg:py-4 tv-lg:px-6 text-sm tv-lg:text-4xl border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
-                style={{
-                  MozAppearance: "textfield",
-                }}
-              />
-            </div>
-          </div>
+        {/* Se customContent existir, só renderiza ele */}
+        {customContent ? (
+          <div>{customContent}</div>
         ) : (
-          <div className="text-md tv-lg:text-4xl text-gray-500 mb-3 tv-lg:mb-10">
-            {description}
-          </div>
-        )}
+          <>
+            {input ? (
+              <div className="mb-6">
+                <p className="text-xs tv-lg:text-4xl text-gray-500 mb-3 tv-lg:mb-10">
+                  Escolha o tempo total da luta em minutos ou segundos.
+                </p>
+                <div className="relative">
+                  <input
+                    value={inputValue}
+                    onChange={(e) => {
+                      setInputValue(
+                        e.target.value.replace(/[^0-9:]/g, "").slice(0, 5)
+                      );
+                    }}
+                    id="fight-time"
+                    min="1"
+                    max="60"
+                    placeholder="MM:SS"
+                    className="w-full px-4 py-2 tv-lg:py-4 tv-lg:px-6 text-sm tv-lg:text-4xl border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200"
+                    style={{
+                      MozAppearance: "textfield",
+                    }}
+                  />
+                </div>
+              </div>
+            ) : (
+              <div className="text-md tv-lg:text-4xl text-gray-500 mb-3 tv-lg:mb-10">
+                {description}
+              </div>
+            )}
 
-        {/* Botões */}
-        <div className="flex justify-center gap-4 tv-lg:gap-8 tv-lg:text-4xl">
-          <button
-            onClick={buttonInput ? handleButtonSet : handleConfirm}
-            className="px-5 py-2.5 tv-lg:px-10 tv-lg:py-5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            {titleButtonSet}
-          </button>
-          <button
-            onClick={handleOnPressClose}
-            className="px-5 py-2.5 tv-lg:px-10 tv-lg:py-5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
-          >
-            {titleButtonCancel}
-          </button>
-        </div>
+            {/* Botões */}
+            <div className="flex justify-center gap-4 tv-lg:gap-8 tv-lg:text-4xl">
+              <button
+                onClick={buttonInput ? handleButtonSet : handleConfirm}
+                className="px-5 py-2.5 tv-lg:px-10 tv-lg:py-5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              >
+                {titleButtonSet}
+              </button>
+              <button
+                onClick={handleOnPressClose}
+                className="px-5 py-2.5 tv-lg:px-10 tv-lg:py-5 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300"
+              >
+                {titleButtonCancel}
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
 }
+

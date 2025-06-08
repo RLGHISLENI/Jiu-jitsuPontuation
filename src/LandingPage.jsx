@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, useState } from "react"
-import logo from "./assets/logo3.png"
-import Blows from "components/Blows"
-import PlayerInput from "components/PlayerInput"
-import PlayerSection from "components/PlayerSection"
-import TimerCard from "components/TimerCard"
-import { ScoreProvider, useScore } from "components/context/ScoreContet"
-import Modal from "components/Modal"
-import Swal from "sweetalert2"
-import defaultLogo from "./assets/logo3.png"
-import VictoryModal from "MessageWinnerUser"
+import React, { useEffect, useRef, useState } from "react";
+import logo from "./assets/logo3.png";
+import Blows from "components/Blows";
+import PlayerInput from "components/PlayerInput";
+import PlayerSection from "components/PlayerSection";
+import TimerCard from "components/TimerCard";
+import { ScoreProvider, useScore } from "components/context/ScoreContet";
+import Modal from "components/Modal";
+import Swal from "sweetalert2";
+import defaultLogo from "./assets/logo3.png";
+import VictoryModal from "MessageWinnerUser";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
-  const [showInstallAlert, setShowInstallAlert] = useState(false)
+  const [showInstallAlert, setShowInstallAlert] = useState(false);
   const {
     punishementValue1,
     punishementValue2,
@@ -22,84 +22,102 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
     namePlayer2,
     resetValuesPunishment,
     handleCleaningScore,
-  } = useScore()
-  const [timeModalOpen, setTimeModalOpen] = useState(false)
-  const [time, setTime] = useState(0)
-  const [timeLeft, setTimeLeft] = useState(0)
-  const [showWinner, setShowWinner] = useState(false)
+  } = useScore();
+  const [timeModalOpen, setTimeModalOpen] = useState(false);
+  const [time, setTime] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [showWinner, setShowWinner] = useState(false);
   const [winnerName, setWinnerName] = useState(null);
-  const [playerWinner, setPlayerWinner] = useState(null)
+  const [playerWinner, setPlayerWinner] = useState(null);
+  const [logoSrc, setLogoSrc] = useState(() => {
+    const savedLogo = localStorage.getItem("customLogo");
+    return savedLogo ? savedLogo : defaultLogo;
+  });
+  const [showLogoModal, setShowLogoModal] = useState(false);
+  const [tempLogo, setTempLogo] = useState(null);
+  const fileInputRef = useRef(null);
 
   const handleSetTime = (newTimeInSeconds) => {
-    setTime(newTimeInSeconds)
-    setTimeLeft(newTimeInSeconds)
-    setTimeModalOpen(false)
+    setTime(newTimeInSeconds);
+    setTimeLeft(newTimeInSeconds);
+    setTimeModalOpen(false);
+  };
+
+  useEffect(() => {
+  const savedLogo = localStorage.getItem("customLogo");
+  if (savedLogo) {
+    setLogoSrc(savedLogo);
   }
+}, []);
 
   const handleWinner = (player) => {
-    const name = player === "Lutador 1" ? namePlayer1 || "Lutador 1" : namePlayer2 || "Lutador 2"
-    setWinnerName(name)
-    setShowWinner(true)
-    setPlayerWinner(player)
-  }
+    const name =
+      player === "Lutador 1"
+        ? namePlayer1 || "Lutador 1"
+        : namePlayer2 || "Lutador 2";
+    setWinnerName(name);
+    setShowWinner(true);
+    setPlayerWinner(player);
+  };
 
-  const handleWinnerCloseModal = (player) => {
-    handleCleaningScore("Lutador 1")
-    handleCleaningScore("Lutador 2")
-    resetValuesPunishment()
-    setShowWinner(false)
-  }
-
-
-  const [logoSrc, setLogoSrc] = useState(() => {
-    const savedLogo = localStorage.getItem("customLogo")
-    return savedLogo ? savedLogo : defaultLogo
-  })
-
-  const [showLogoModal, setShowLogoModal] = useState(false)
-  const [tempLogo, setTempLogo] = useState(null)
-  const fileInputRef = useRef(null)
+  const handleWinnerCloseModal = () => {
+    handleCleaningScore("Lutador 1");
+    handleCleaningScore("Lutador 2");
+    resetValuesPunishment();
+    setShowWinner(false);
+  };
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0]
-    if (!file) return
-    const reader = new FileReader()
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
     reader.onloadend = () => {
-      setTempLogo(reader.result)
-      setShowLogoModal(true)
-    }
-    reader.readAsDataURL(file)
-  }
+      setTempLogo(reader.result);
+      setShowLogoModal(true);
+    };
+    reader.readAsDataURL(file);
+  };
 
   const handleOpenLogoModal = () => {
-    fileInputRef.current?.click() // isso abre o seletor de arquivos
-  }
+  setTempLogo(logoSrc || null); // logo atual para preview
+  setShowLogoModal(true);
+  console.log("Logo modal opened");
+}
 
   const confirmLogoChange = () => {
-    if (tempLogo) {
-      setLogoSrc(tempLogo)
-      localStorage.setItem("customLogo", tempLogo)
-      setTempLogo(null)
-    }
-    setShowLogoModal(false)
+  if (tempLogo) {
+    setLogoSrc(tempLogo);
+    localStorage.setItem("customLogo", tempLogo);
+    setTempLogo(null);
+    // Forçar atualização imediata
+    setTimeout(() => {
+      setShowLogoModal(false);
+    }, 100);
+  } else {
+    setShowLogoModal(false);
   }
+}
 
   const resetToDefaultLogo = () => {
-    setLogoSrc(defaultLogo)
-    localStorage.removeItem("customLogo")
-    setShowLogoModal(false)
-  }
+    setLogoSrc(defaultLogo);
+    localStorage.removeItem("customLogo");
+    setShowLogoModal(false);
+  };
 
   useEffect(() => {
     if (!disableInstall) {
-      setShowInstallAlert(true)
+      setShowInstallAlert(true);
     }
-  }, [disableInstall])
+  }, [disableInstall]);
 
   return (
     <>
       {showWinner && (
-        <VictoryModal playerWinner={playerWinner} winnerName={winnerName} onClose={handleWinnerCloseModal} />
+        <VictoryModal
+          playerWinner={playerWinner}
+          winnerName={winnerName}
+          onClose={handleWinnerCloseModal}
+        />
       )}
       {showInstallAlert && (
         <Modal
@@ -109,8 +127,8 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           title="Instalar Aplicativo"
           description="Deseja instalar este aplicativo em seu dispositivo?"
           handleButtonSet={() => {
-            handleInstall()
-            setShowInstallAlert(false)
+            handleInstall();
+            setShowInstallAlert(false);
           }}
           handleOnPressClose={() => setShowInstallAlert(false)}
         />
@@ -129,50 +147,56 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         />
       )}
       {showLogoModal && (
-        <Modal
-          title="Alterar Logo"
-          description="Confirme a nova logo ou cancele para manter a atual."
-          input={false}
-          handleOnPressClose={() => {
-            setShowLogoModal(false)
-            setTempLogo(null)
-          }}
-          customContent={
-            <div className="flex flex-col items-center space-y-4">
-              {tempLogo && (
-                <img
-                  src={tempLogo}
-                  alt="Prévia da nova logo"
-                  className="w-40 h-auto object-contain rounded border"
-                />
-              )}
-              <div className="flex space-x-4">
-                <button
-                  onClick={confirmLogoChange}
-                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
-                >
-                  Confirmar
-                </button>
-                <button
-                  onClick={() => {
-                    setShowLogoModal(false)
-                    setTempLogo(null)
-                  }}
-                  className="bg-gray-300 hover:bg-gray-400 px-4 py-2 rounded"
-                >
-                  Cancelar
-                </button>
-                <button
-                  onClick={resetToDefaultLogo}
-                  className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded"
-                >
-                  Resetar para padrão
-                </button>
-              </div>
-            </div>
-          }
-        />
-      )}
+  <Modal
+    title="Alterar Logo"
+    handleOnPressClose={() => {
+      setShowLogoModal(false);
+      setTempLogo(null);
+    }}
+    customContent={
+      <div className="flex flex-col items-center space-y-6 px-4">
+        {/* Pré-visualização da logo */}
+        <div className="w-full flex justify-center">
+          <img
+            src={tempLogo || logoSrc || defaultLogo}
+            alt="Prévia da logo"
+            className="w-40 h-40 object-contain rounded-md border border-gray-300 shadow-md"
+          />
+        </div>
+
+        {/* Botão para selecionar nova imagem */}
+        <div className="w-full">
+          <label className="block w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg cursor-pointer transition">
+            Selecionar Nova Logo
+            <input
+              type="file"
+              accept="image/*"
+              className="hidden"
+              onChange={handleImageChange}
+              ref={fileInputRef}
+            />
+          </label>
+        </div>
+
+        {/* Botões de ação */}
+        <div className="flex justify-center gap-4 w-full">
+          <button
+            onClick={confirmLogoChange}
+            className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md transition"
+          >
+            Confirmar
+          </button>
+          <button
+            onClick={resetToDefaultLogo}
+            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg shadow-md transition"
+          >
+            Usar Padrão
+          </button>
+        </div>
+      </div>
+    }
+  />
+)}
 
       <div className="font-sans flex flex-col h-screen">
         <div className="flex flex-col flex-1">
@@ -185,7 +209,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               textLabel="text-white"
               placeholderColor="placeholder-white"
               BackGroundColor="bg-gray-900"
-              handleOpenModal={() => setShowLogoModal(true)}
+              handleOpenLogoModal={handleOpenLogoModal}
               textColor="text-white"
               borderColorScore="border-white"
               borderColorPunishement="border-white"
@@ -200,6 +224,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               onPressPunishementFalse={(e) =>
                 handlePunishement("Lutador 1", false, e)
               }
+                logoSrc={logoSrc} 
             />
           </div>
           <div className="flex-1 min-h-0">
@@ -234,12 +259,14 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               onPressPunishementFalse={(e) =>
                 handlePunishement("Lutador 2", false, e)
               }
+              handleOpenLogoModal={handleOpenLogoModal}
+                logoSrc={logoSrc} 
             />
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;
