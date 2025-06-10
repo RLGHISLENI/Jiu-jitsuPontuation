@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<div
+      className={`${titleTimer === "Iniciado" ? "text-green-400" : "text-white"} 
+                  bg-red-600 text-center text-3xl md:text-3xl lg:text-2xl 
+                  2xl:text-5xl font-bold py-2 2xl:py-3 
+                  tv-4k:text-8xl tv-lg:text-5xl`}
+    >
