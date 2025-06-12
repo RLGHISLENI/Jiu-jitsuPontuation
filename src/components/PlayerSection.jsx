@@ -125,7 +125,7 @@ export default function PlayerSection({
 
               {/* TimerCard - posicionado à direita com margem automática */}
               {showTimer && (
-                <div className="h-0 lg:ml-0 flex items-end justify-center mt-[20%]">
+                <div className="h-0 lg:ml-[-50px] me-5 flex items-end justify-center mt-[20%]">
                   {" "}
                   {/* ml-auto empurra para a direita */}
                   <TimerCard

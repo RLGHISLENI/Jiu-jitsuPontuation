@@ -57,13 +57,7 @@ const VictoryModal = ({ playerWinner, winnerName, onClose }) => {
           {currentWinner}
         </h2>
 
-        <p
-          className={`text-2xl md:text-3xl ${
-            isPlayer1 ? "text-gray-300" : "text-gray-700"
-          } mt-8`}
-        >
-          Pressione ESC ou clique no X para continuar
-        </p>
+        
       </div>
     </div>
   );

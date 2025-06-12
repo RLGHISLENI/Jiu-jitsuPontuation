@@ -23,7 +23,7 @@ export default function TimerCard({
   const totalPlayer1 = getTotalScore("Lutador 1");
   const totalPlayer2 = getTotalScore("Lutador 2");
 
-console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
+  console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
   return (
     <div className="relative w-full max-w-full  ">
       <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-10 tv-lg:gap-16">
@@ -45,7 +45,7 @@ console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
         {/* Coluna direita (conteúdo principal) */}
         <div className="flex flex-col items-center gap-4 2xl:gap-10 3xl:gap-12 tv-lg:gap-12 tv-4k:gap-16">
           {/* ScoreCard superior */}
-          <div className="w-48 md:w-30 xl:w-64 2xl:w-80 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem] max-w-full">
+          <div className="w-48 md:w-30 xl:w-64 2xl:w-80 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem] ">
             <TotalScoreCard
               title={"Pontuação Final"}
               player={player}
@@ -55,12 +55,13 @@ console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
 
           {/* Timer */}
           <div
-            className="bg-gray-200 w-full max-w-xs sm:max-w-sm md:max-w-md 
-                      lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl 
-                      tv-lg:max-w-3xl tv-4k:max-w-4xl
-                      text-black text-center font-bold rounded-lg shadow-lg"
+            className="bg-gray-200 w-full 2xl:w-96 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem]
+            text-black text-center font-bold rounded-lg shadow-lg"
           >
-            <div className="bg-red-600 text-white text-center text-3xl md:text-3xl lg:text-2xl 2xl:text-5xl font-bold py-2 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl">
+            <div
+              className={`${titleTimer === "Iniciado" ? "text-green-400" : "text-white"}  
+                bg-red-600 text-center text-3xl md:text-3xl lg:text-2xl 2xl:text-5xl font-bold py-2 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl`}
+            >
               {titleTimer}
             </div>
             <p className="text-5xl md:text-7xl 2xl:text-8xl tv-4k:text-15xl tv-lg:text-10xl font-extrabold hover:text-red-400 py-1">
@@ -87,7 +88,7 @@ console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
               </button>
               <button
                 onClick={handleOpenModal}
-                className="text-sm md:text-lg 2xl:text-xl 3xl:text-2xl tv-4k:text-5xl tv-lg:text-3xl text-blue-600 hover:text-blue-800 underline whitespace-nowrap"
+                className="text-sm md:text-lg 3xl:text-2xl tv-4k:text-5xl tv-lg:text-3xl text-blue-600 hover:text-blue-800 underline whitespace-nowrap"
               >
                 Definir o tempo
               </button>
