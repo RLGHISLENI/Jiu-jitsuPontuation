@@ -26,9 +26,9 @@ export default function TimerCard({
   console.log("handleOpenLogoModal no TimerCard:", handleOpenLogoModal);
   return (
     <div className="relative w-full max-w-full  ">
-      <div className="w-full flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-10 tv-lg:gap-16">
+      <div className="w-full flex flex-col lg:flex-row items-center justify-center ">
         {/* Coluna esquerda (LOGO) */}
-        <div className="flex justify-center items-center mt-4 lg:mt-0">
+        <div className="flex justify-center items-center ">
           <button
             onClick={handleOpenLogoModal}
             className="max-w-[260px] w-full"
@@ -67,24 +67,24 @@ export default function TimerCard({
             <p className="text-5xl md:text-7xl 2xl:text-8xl tv-4k:text-15xl tv-lg:text-10xl font-extrabold hover:text-red-400 py-1">
               {time}
             </p>
-            <div className="flex justify-center items-center p-2 gap-3 tv-lg:gap-10 flex-wrap">
+            <div className="flex justify-center items-center p-2 gap-3 tv-lg:gap-10 ">
               <button
                 onClick={handleStart}
                 className="text-gray-600 hover:text-gray-800"
               >
-                <PlayCircle className="size-8 md:size-10 tv-lg:size-16" />
+                <PlayCircle className="size-5 md:size-7 tv-lg:size-16" />
               </button>
               <button
                 onClick={handlePause}
                 className="text-yellow-600 hover:text-yellow-800"
               >
-                <PauseCircle className="size-8 md:size-10 tv-lg:size-16" />
+                <PauseCircle className="size-5 md:size-7 tv-lg:size-16" />
               </button>
               <button
                 onClick={handleReset}
                 className="text-red-600 hover:text-red-800"
               >
-                <RotateCcw className="size-8 md:size-10 tv-lg:size-16" />
+                <RotateCcw className="size-5 md:size-7 tv-lg:size-16" />
               </button>
               <button
                 onClick={handleOpenModal}
