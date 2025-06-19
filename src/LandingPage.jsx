@@ -160,7 +160,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           <img
             src={tempLogo || logoSrc || defaultLogo}
             alt="Prévia da logo"
-            className="w-40 h-40 object-contain rounded-md border border-gray-300 shadow-md"
+            className="w-40 h-40 object-contain rounded-md border border-gray-300 bg-gray-400 shadow-md"
           />
         </div>
 
