@@ -7,7 +7,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
-     icon: path.join(__dirname, "icon.ico"), // Se o ícone estiver junto do electron.js
+     icon: path.join(__dirname, "logo.png"), // Se o ícone estiver junto do electron.js
     webPreferences: {
       
       preload: path.join(__dirname, "preloader.js"),
