@@ -7,7 +7,7 @@ import TimerCard from "components/TimerCard";
 import { ScoreProvider, useScore } from "components/context/ScoreContet";
 import Modal from "components/Modal";
 import Swal from "sweetalert2";
-import defaultLogo from "./assets/logo3.png";
+import defaultLogo from "./assets/logo.png";
 import VictoryModal from "MessageWinnerUser";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
