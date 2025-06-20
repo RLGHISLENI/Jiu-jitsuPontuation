@@ -1,12 +1,12 @@
 {
-  "name": "pwa-app",
+  "name": "placar-jiu-jitsu",
   "main": "public/electron.js",
   "homepage": "./",
   "author": {
     "name": "Nicolas Menegussi Ramos",
     "email": "nicolasmramos09@gmail.com"
   },
-  "description": "teste teste",
+  "description": "Software para pontuação de Jiu-Jitsu.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

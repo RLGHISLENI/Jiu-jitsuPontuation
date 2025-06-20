@@ -26,7 +26,7 @@ const OfflinePage = () => {
         Retry
       </button>
     </div>
-  );
-};
+  )
+}
 
 export default OfflinePage;
