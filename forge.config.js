@@ -1,23 +1,22 @@
 module.exports = {
   packagerConfig: {
     asar: true,
-    icon: "./public/logo.png", // será logo.ico, logo.icns ou logo.png dependendo do SO
-    version: "1.1.0",
+    version: "0.2.0",
+    icon: "./public/favicon.ico",
   },
   makers: [
     {
       name: "@electron-forge/maker-squirrel",
       config: {
         name: "placar-jiujitsu",
-        iconUrl: "https://example.com/path/to/logo.png",
-        setupIcon: "./public/logo.png",
+        setupIcon: "./public/favicon.ico",
       },
     },
     {
       name: "@electron-forge/maker-zip",
       platforms: ["darwin"],
       options: {
-        icon: "./public/logo.icns",
+        icon: "./public/logo192.png",
       },
     },
     {

@@ -28,15 +28,15 @@ export default function TimerCard({
     <div className="relative w-full max-w-full  ">
       <div className="w-full flex flex-col lg:flex-row items-center justify-center ">
         {/* Coluna esquerda (LOGO) */}
-        <div className="flex justify-center items-center ">
+  <div className="flex justify-center items-center  ">
           <button
             onClick={handleOpenLogoModal}
-            className="max-w-[260px] w-full"
+      className="w-auto mx-auto"
           >
             <img
               src={logoSrc || defaultLogo}
               alt="Logo"
-              className="w-full h-auto object-contain max-w-full"
+        className="w-64  sm:w-72  md:w-72 lg:w-72 xl:w-[20rem]  2xl:w-[22rem] 3xl:w-[25rem] h-auto object-contain"
               draggable={false}
             />
           </button>
@@ -45,7 +45,7 @@ export default function TimerCard({
         {/* Coluna direita (conteúdo principal) */}
         <div className="flex flex-col items-center gap-4 2xl:gap-10 3xl:gap-12 tv-lg:gap-12 tv-4k:gap-16">
           {/* ScoreCard superior */}
-          <div className="w-48 md:w-30 xl:w-64 2xl:w-80 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem] ">
+          <div className="w-56 md:w-30 xl:w-64 2xl:w-80 3xl:w-80 tv-lg:w-[35rem] tv-4k:w-[40rem] ">
             <TotalScoreCard
               title={"Pontuação Final"}
               player={player}
@@ -59,7 +59,9 @@ export default function TimerCard({
             text-black text-center font-bold rounded-lg shadow-lg"
           >
             <div
-              className={`${titleTimer === "Iniciado" ? "text-green-400" : "text-white"}  
+              className={`${
+                titleTimer === "Iniciado" ? "text-green-400" : "text-white"
+              }  
                 bg-red-600 text-center text-3xl md:text-3xl lg:text-2xl 2xl:text-5xl font-bold py-2 2xl:py-3 tv-4k:text-8xl tv-lg:text-5xl`}
             >
               {titleTimer}
