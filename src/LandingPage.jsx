@@ -268,7 +268,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
           <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
             <span class="text-sm text-gray-500 text-center dark:text-gray-400">
               © 2025{" "}
-              <a href="https://www.linkedin.com/in/nicolas-menegussi-ramos-85b933293/" class="hover:underline">
+              <a href="https://portfolio-zeta-blond-61.vercel.app/" class="hover:underline">
                 Desenvolvido por Nicolas Menegussi Ramos™
               </a>
               . All Rights Reserved.
