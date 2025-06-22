@@ -44,11 +44,11 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   };
 
   useEffect(() => {
-  const savedLogo = localStorage.getItem("customLogo");
-  if (savedLogo) {
-    setLogoSrc(savedLogo);
-  }
-}, []);
+    const savedLogo = localStorage.getItem("customLogo");
+    if (savedLogo) {
+      setLogoSrc(savedLogo);
+    }
+  }, []);
 
   const handleWinner = (player) => {
     const name =
@@ -79,24 +79,24 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
   };
 
   const handleOpenLogoModal = () => {
-  setTempLogo(logoSrc || null); // logo atual para preview
-  setShowLogoModal(true);
-  console.log("Logo modal opened");
-}
+    setTempLogo(logoSrc || null); // logo atual para preview
+    setShowLogoModal(true);
+    console.log("Logo modal opened");
+  };
 
   const confirmLogoChange = () => {
-  if (tempLogo) {
-    setLogoSrc(tempLogo);
-    localStorage.setItem("customLogo", tempLogo);
-    setTempLogo(null);
-    // Forçar atualização imediata
-    setTimeout(() => {
+    if (tempLogo) {
+      setLogoSrc(tempLogo);
+      localStorage.setItem("customLogo", tempLogo);
+      setTempLogo(null);
+      // Forçar atualização imediata
+      setTimeout(() => {
+        setShowLogoModal(false);
+      }, 100);
+    } else {
       setShowLogoModal(false);
-    }, 100);
-  } else {
-    setShowLogoModal(false);
-  }
-}
+    }
+  };
 
   const resetToDefaultLogo = () => {
     setLogoSrc(defaultLogo);
@@ -147,56 +147,56 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
         />
       )}
       {showLogoModal && (
-  <Modal
-    title="Alterar Logo"
-    handleOnPressClose={() => {
-      setShowLogoModal(false);
-      setTempLogo(null);
-    }}
-    customContent={
-      <div className="flex flex-col items-center space-y-6 px-4">
-        {/* Pré-visualização da logo */}
-        <div className="w-full flex justify-center">
-          <img
-            src={tempLogo || logoSrc || defaultLogo}
-            alt="Prévia da logo"
-            className="w-40 h-40 object-contain rounded-md border border-gray-300 bg-gray-400 shadow-md"
-          />
-        </div>
+        <Modal
+          title="Alterar Logo"
+          handleOnPressClose={() => {
+            setShowLogoModal(false);
+            setTempLogo(null);
+          }}
+          customContent={
+            <div className="flex flex-col items-center space-y-6 px-4">
+              {/* Pré-visualização da logo */}
+              <div className="w-full flex justify-center">
+                <img
+                  src={tempLogo || logoSrc || defaultLogo}
+                  alt="Prévia da logo"
+                  className="w-40 h-40 object-contain rounded-md border border-gray-300 bg-gray-400 shadow-md"
+                />
+              </div>
 
-        {/* Botão para selecionar nova imagem */}
-        <div className="w-full">
-          <label className="block w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg cursor-pointer transition">
-            Selecionar Nova Logo
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleImageChange}
-              ref={fileInputRef}
-            />
-          </label>
-        </div>
+              {/* Botão para selecionar nova imagem */}
+              <div className="w-full">
+                <label className="block w-full px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white text-center rounded-lg cursor-pointer transition">
+                  Selecionar Nova Logo
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleImageChange}
+                    ref={fileInputRef}
+                  />
+                </label>
+              </div>
 
-        {/* Botões de ação */}
-        <div className="flex justify-center gap-4 w-full">
-          <button
-            onClick={confirmLogoChange}
-            className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md transition"
-          >
-            Confirmar
-          </button>
-          <button
-            onClick={resetToDefaultLogo}
-            className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg shadow-md transition"
-          >
-            Usar Padrão
-          </button>
-        </div>
-      </div>
-    }
-  />
-)}
+              {/* Botões de ação */}
+              <div className="flex justify-center gap-4 w-full">
+                <button
+                  onClick={confirmLogoChange}
+                  className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-md transition"
+                >
+                  Confirmar
+                </button>
+                <button
+                  onClick={resetToDefaultLogo}
+                  className="px-6 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-lg shadow-md transition"
+                >
+                  Usar Padrão
+                </button>
+              </div>
+            </div>
+          }
+        />
+      )}
 
       <div className="font-sans flex flex-col h-screen">
         <div className="flex flex-col flex-1">
@@ -224,7 +224,7 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
               onPressPunishementFalse={(e) =>
                 handlePunishement("Lutador 1", false, e)
               }
-                logoSrc={logoSrc} 
+              logoSrc={logoSrc}
             />
           </div>
           <div className="flex-1 min-h-0">
@@ -260,10 +260,21 @@ const LandingPage = ({ disableInstall, handleInstall }) => {
                 handlePunishement("Lutador 2", false, e)
               }
               handleOpenLogoModal={handleOpenLogoModal}
-                logoSrc={logoSrc} 
+              logoSrc={logoSrc}
             />
           </div>
         </div>
+        <footer class="bg-white shadow-sm  dark:bg-gray-800">
+          <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-center">
+            <span class="text-sm text-gray-500 text-center dark:text-gray-400">
+              © 2025{" "}
+              <a href="https://www.linkedin.com/in/nicolas-menegussi-ramos-85b933293/" class="hover:underline">
+                Desenvolvido por Nicolas Menegussi Ramos™
+              </a>
+              . All Rights Reserved.
+            </span>
+          </div>
+        </footer>
       </div>
     </>
   );

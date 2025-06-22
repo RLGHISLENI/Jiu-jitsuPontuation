@@ -126,23 +126,21 @@ export default function PlayerSection({
               {/* TimerCard - posicionado à direita com margem automática */}
               {showTimer && (
                 <div className="h-0 lg:ml-0 me-4 flex items-end justify-center mt-auto">
-                  
-
-                    <TimerCard
-                      handleStart={handleStart}
-                      handlePause={(e) => handlePause(e)}
-                      handleReset={handleReset}
-                      setTime={handleSetTime}
-                      titleTimer={
-                        isRunning && timeLeft > 0 ? "Iniciado" : "Parado"
-                      }
-                      time={formatTime(timeLeft)}
-                      setIsOpen={setIsOpen}
-                      handleOpenModal={() => setIsOpen(!isOpen)}
-                      logoSrc={logoSrc}
-                      handleOpenLogoModal={handleOpenLogoModal}
-                    />
-                    </div>
+                  <TimerCard
+                    handleStart={handleStart}
+                    handlePause={(e) => handlePause(e)}
+                    handleReset={handleReset}
+                    setTime={handleSetTime}
+                    titleTimer={
+                      isRunning && timeLeft > 0 ? "Iniciado" : "Parado"
+                    }
+                    time={formatTime(timeLeft)}
+                    setIsOpen={setIsOpen}
+                    handleOpenModal={() => setIsOpen(!isOpen)}
+                    logoSrc={logoSrc}
+                    handleOpenLogoModal={handleOpenLogoModal}
+                  />
+                </div>
               )}
             </div>
           </div>
