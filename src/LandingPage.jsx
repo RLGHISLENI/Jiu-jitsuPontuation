@@ -11,7 +11,7 @@ import defaultLogo from "./assets/logo.png";
 import VictoryModal from "MessageWinnerUser";
 
 const LandingPage = ({ disableInstall, handleInstall }) => {
-  const [showInstallAlert, setShowInstallAlert] = useState(false);
+  const [showInstallAlert, setShowInstallAlert] = useState(true);
   const {
     punishementValue1,
     punishementValue2,
