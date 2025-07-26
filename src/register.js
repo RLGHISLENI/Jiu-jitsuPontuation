@@ -1,3 +1,7 @@
+// Arquivo comentado para backup. O projeto não irá mais registrar o service worker.
+// Para reativar, descomente o código abaixo.
+
+/*
 export function serviceWorkerRegistration() {
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
@@ -13,3 +17,4 @@ export function serviceWorkerRegistration() {
     });
   }
 }
+*/

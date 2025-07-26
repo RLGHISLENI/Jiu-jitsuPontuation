@@ -1,6 +1,8 @@
-importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox-sw.js"
-);
+// Arquivo comentado para backup. O projeto não utiliza mais o service worker.
+// Para reativar, descomente o código abaixo.
+
+/*
+importScripts("workbox-sw.js");
 
 if (workbox) {
   self.__WB_DISABLE_DEV_LOGS = true;
@@ -44,3 +46,4 @@ if (workbox) {
 } else {
   console.error("❌ Workbox failed to load.");
 }
+*/

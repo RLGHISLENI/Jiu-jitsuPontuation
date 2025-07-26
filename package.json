@@ -42,7 +42,11 @@
     "electron:package:linux": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "make:build": "npm run build && electron-forge make"
+    "clear": "rm -rf node_modules && rm -rf package-lock.json && rm -rf dist && rm -rf build && rm -rf out",
+    "init": "npm install --force",
+    "make:build": "npm run build && cd build && npm run dist && cd ..",
+    "make:build:pkg": "npm run make:build && npm run package",
+    "make:build:forge": "npm run make:build && npm run electron-forge make"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +76,7 @@
     "@electron-forge/plugin-fuses": "^7.8.1",
     "@electron/fuses": "^1.8.0",
     "electron": "^36.5.0",
+    "electron-builder": "^26.0.12",
     "electron-packager": "^17.1.2"
   },
   "build": {
@@ -82,6 +87,10 @@
     },
     "files": [
       "build/**/*",
+      "public/electron.js",
+      "public/preloader.js",
+      "public/workbox-sw.js",
+      "public/offline.html",
       "node_modules/**/"
     ],
     "win": {

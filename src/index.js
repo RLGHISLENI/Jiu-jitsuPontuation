@@ -16,4 +16,4 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration();
+// serviceWorkerRegistration(); // Comentado para desativar o service worker. Para reativar, descomente esta linha.
